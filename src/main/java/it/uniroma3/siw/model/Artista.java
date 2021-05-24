@@ -36,12 +36,16 @@ public class Artista {
 	@Column(nullable=false)
 	private String nazionalita;
 	
+	//Associazione OneToMany tra Artista e Opera, viene mappato per identicficare che  due riferiemnti 
+	//in Artista e Opera si riferiscono alla stessa cosa
+	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List <Opera>opere;
 	
-	@OneToMany
-	private List<Opera> opere;
 
 	
-	//get and set
+	/****************************************************************************************************/
+	/******************************************METODI GET E SET******************************************/
+	/****************************************************************************************************/
 	
 	public Long getId() {
 		return id;

@@ -18,13 +18,19 @@ public class Opera {
 	@Column(nullable=false)
 	private String description;
 
+	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 
+	//in Artista e Opera si riferiscono alla stessa cosa
 	@ManyToOne
 	private Collezione collezione;
 	
+	//Associazione ManyToOne tra Opera e Artista, viene mappato per identicficare che  due riferiemnti 
+	//in Artista e Opera si riferiscono alla stessa cosa
 	@ManyToOne
 	private Artista artista;
 	
-	//get and set
+	/****************************************************************************************************/
+	/******************************************METODI GET E SET******************************************/
+	/****************************************************************************************************/
 	
 	public Long getId() {
 		return Id;

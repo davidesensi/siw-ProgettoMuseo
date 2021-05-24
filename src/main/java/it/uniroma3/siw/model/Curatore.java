@@ -36,12 +36,16 @@ public class Curatore {
 	@Column(nullable = false)
 	private String telefono;
 	
-	@OneToMany
-	private List<Collezione> collezioni;
+	//Associazione OneToMany tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
+	//in Curatore e Collezione si riferiscono alla stessa cosa
+	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List <Collezione>collezioni;
 
 	
 	
-	//get and set
+	/****************************************************************************************************/
+	/******************************************METODI GET E SET******************************************/
+	/****************************************************************************************************/
 	
 	public Long getId() {
 		return id;

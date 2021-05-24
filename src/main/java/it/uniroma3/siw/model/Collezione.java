@@ -17,15 +17,20 @@ public class Collezione {
 	private String name;
 	private String description;
 	
-	
+	//Associazione ManyToOne tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
+	//in Collezione e Curatore si riferiscono alla stessa cosa
 	@ManyToOne
 	private Curatore curatore;
 	
-	@OneToMany
-	private List<Opera> opere;
+	//Associazione OneToMany tra Collezione e Opera, viene mappato per identicficare che  due riferiemnti 
+	//in Collezione e Opera si riferiscono alla stessa cosa
+	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List <Opera>opere;
 	
 	
-	//get and set
+	/****************************************************************************************************/
+	/******************************************METODI GET E SET******************************************/
+	/****************************************************************************************************/
 	
 	public Long getId() {
 		return id;
