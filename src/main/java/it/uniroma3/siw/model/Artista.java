@@ -1,50 +1,51 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 public class Artista {
-	
+
 	//cazzo leggi
 	//definizioni attributi
-	
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable=false)
 	private String nome;
-	
+
 	@Column(nullable=false)
 	private String cognome;
-	
+
 	@Column(nullable=false)
 	private LocalDate dataN;
-	
+
 	@Column(nullable=false)
 	private String luogoN;
-	
+
 	private LocalDate dataM;
 	private String luogoM;
-	
+
 	@Column(nullable=false)
 	private String nazionalita;
-	
+
 	//Associazione OneToMany tra Artista e Opera, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
 	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Opera>opere;
-	
+
 	//Costruttore no args
 	public Artista() {
-		
+		this.opere = new ArrayList<>();		
 	}
-	
+
 	public Artista(String nome, String cognome, LocalDate dataN, String luogoN, 
-			       LocalDate dataM, String luogoM, String nazionalita) {
+			LocalDate dataM, String luogoM, String nazionalita) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataN = dataN;
@@ -54,11 +55,11 @@ public class Artista {
 		this.nazionalita = nazionalita;		
 	}
 
-	
+
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
 	/****************************************************************************************************/
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -130,6 +131,6 @@ public class Artista {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
-	
+
 
 }

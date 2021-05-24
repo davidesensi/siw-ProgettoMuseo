@@ -1,65 +1,66 @@
 package it.uniroma3.siw.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 public class Curatore {
-	
-	
+
+
 	//definizione variabili
-	
+
 	@Id
 	@GeneratedValue(strategy =GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String cognome;
-	
+
 	@Column(nullable = false)
 	private LocalDate dataN;
-	
+
 	@Column(nullable = false)
 	private String luogoN;
-	
+
 	//@Column(nullable = false)
 	//private String matricola;
-	
+
 	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String telefono;
-	
+
 	//Associazione OneToMany tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Curatore e Collezione si riferiscono alla stessa cosa
 	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Collezione>collezioni;
 
 	//Costruttore no args
-		public Curatore() {
-			
-		}
-		
-		public Curatore(String nome, String cognome, LocalDate dataN, String luogoN, 
-				        String email, String telefono) {
-			this.nome = nome;
-			this.cognome = cognome;
-			this.dataN = dataN;
-			this.luogoN = luogoN;
-			this.email = email;
-			this.telefono = telefono;		
-		}
-	
+	public Curatore() {
+		this.collezioni = new ArrayList<>();
+	}
+
+	public Curatore(String nome, String cognome, LocalDate dataN, String luogoN, 
+			String email, String telefono) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataN = dataN;
+		this.luogoN = luogoN;
+		this.email = email;
+		this.telefono = telefono;		
+	}
+
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
 	/****************************************************************************************************/
-	
+
 	public Long getId() {
 		return id;
 	}

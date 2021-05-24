@@ -1,49 +1,51 @@
 package it.uniroma3.siw.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 public class Collezione {
-	
+
 	//definizioni attributi
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable=false)
 	private String nome;
-	
+
 	@Column(nullable=false)
 	private String descrizione;
-	
+
 	//Associazione ManyToOne tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Collezione e Curatore si riferiscono alla stessa cosa
 	@ManyToOne
 	private Curatore curatore;
-	
+
 	//Associazione OneToMany tra Collezione e Opera, viene mappato per identicficare che  due riferiemnti 
 	//in Collezione e Opera si riferiscono alla stessa cosa
 	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Opera>opere;
-	
+
 	//Costruttore no args
-		public Collezione() {
-			
-		}
-		
-		public Collezione(String nome, String descrizione) {
-			this.nome = nome;
-			this.descrizione = descrizione;	
-		}
-	
-	
+	public Collezione() {
+		this.opere = new ArrayList<>();
+	}
+
+	public Collezione(String nome, String descrizione, Curatore curatore) {
+		this.nome = nome;
+		this.descrizione = descrizione;	
+		this.curatore = curatore;
+	}
+
+
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
 	/****************************************************************************************************/
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -82,8 +84,8 @@ public class Collezione {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
-	
-	
-	
+
+
+
 
 }

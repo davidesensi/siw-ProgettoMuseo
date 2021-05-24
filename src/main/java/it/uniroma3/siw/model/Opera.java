@@ -4,17 +4,17 @@ import javax.persistence.*;
 
 @Entity
 public class Opera {
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long Id;
 
 	@Column(nullable=false)
 	private String titolo;
-	
+
 	@Column(nullable=false)
 	private int anno;
-	
+
 	@Column(nullable=false)
 	private String descrizione;
 
@@ -22,27 +22,29 @@ public class Opera {
 	//in Artista e Opera si riferiscono alla stessa cosa
 	@ManyToOne
 	private Collezione collezione;
-	
+
 	//Associazione ManyToOne tra Opera e Artista, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
 	@ManyToOne
 	private Artista artista;
-	
+
 	//Costruttore no args
-		public Opera() {
-			
-		}
-		
-		public Opera(String titolo, int anno, String descrizione) {
-			this.titolo = titolo;
-			this.anno = anno;
-			this.descrizione = descrizione;	
-		}
-	
+	public Opera() {
+
+	}
+
+	public Opera(String titolo, int anno, String descrizione, Collezione collezione, Artista artista) {
+		this.titolo = titolo;
+		this.anno = anno;
+		this.descrizione = descrizione;	
+		this.collezione = collezione;
+		this.artista = artista;
+	}
+
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
 	/****************************************************************************************************/
-	
+
 	public Long getId() {
 		return Id;
 	}
@@ -90,5 +92,5 @@ public class Opera {
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
-	
+
 }
