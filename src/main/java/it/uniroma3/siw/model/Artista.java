@@ -27,10 +27,7 @@ public class Artista {
 	@Column(nullable=false)
 	private String luogoN;
 	
-	@Column(nullable=false)
 	private LocalDate dataM;
-	
-	@Column(nullable=false)
 	private String luogoM;
 	
 	@Column(nullable=false)
@@ -41,6 +38,21 @@ public class Artista {
 	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Opera>opere;
 	
+	//Costruttore no args
+	public Artista() {
+		
+	}
+	
+	public Artista(String nome, String cognome, LocalDate dataN, String luogoN, 
+			       LocalDate dataM, String luogoM, String nazionalita) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataN = dataN;
+		this.luogoN = luogoN;
+		this.dataM = dataM;
+		this.luogoM = luogoM;
+		this.nazionalita = nazionalita;		
+	}
 
 	
 	/****************************************************************************************************/
@@ -110,7 +122,14 @@ public class Artista {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
-	
+
+	public List<Opera> getOpere() {
+		return opere;
+	}
+
+	public void setOpere(List<Opera> opere) {
+		this.opere = opere;
+	}
 	
 
 }

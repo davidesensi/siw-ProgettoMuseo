@@ -14,8 +14,10 @@ public class Collezione {
 	private Long id;
 	
 	@Column(nullable=false)
-	private String name;
-	private String description;
+	private String nome;
+	
+	@Column(nullable=false)
+	private String descrizione;
 	
 	//Associazione ManyToOne tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Collezione e Curatore si riferiscono alla stessa cosa
@@ -26,6 +28,16 @@ public class Collezione {
 	//in Collezione e Opera si riferiscono alla stessa cosa
 	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Opera>opere;
+	
+	//Costruttore no args
+		public Collezione() {
+			
+		}
+		
+		public Collezione(String nome, String descrizione) {
+			this.nome = nome;
+			this.descrizione = descrizione;	
+		}
 	
 	
 	/****************************************************************************************************/
@@ -38,18 +50,39 @@ public class Collezione {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getDescrizione() {
+		return descrizione;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
+
+	public Curatore getCuratore() {
+		return curatore;
+	}
+
+	public void setCuratore(Curatore curatore) {
+		this.curatore = curatore;
+	}
+
+	public List<Opera> getOpere() {
+		return opere;
+	}
+
+	public void setOpere(List<Opera> opere) {
+		this.opere = opere;
+	}
+	
 	
 	
 

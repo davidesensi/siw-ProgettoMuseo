@@ -16,10 +16,10 @@ public class Curatore {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String firstName;
+	private String nome;
 	
 	@Column(nullable = false)
-	private String lastName;
+	private String cognome;
 	
 	@Column(nullable = false)
 	private LocalDate dataN;
@@ -41,7 +41,20 @@ public class Curatore {
 	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List <Collezione>collezioni;
 
-	
+	//Costruttore no args
+		public Curatore() {
+			
+		}
+		
+		public Curatore(String nome, String cognome, LocalDate dataN, String luogoN, 
+				        String email, String telefono) {
+			this.nome = nome;
+			this.cognome = cognome;
+			this.dataN = dataN;
+			this.luogoN = luogoN;
+			this.email = email;
+			this.telefono = telefono;		
+		}
 	
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
@@ -55,20 +68,20 @@ public class Curatore {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getCognome() {
+		return cognome;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 
 	public LocalDate getDataN() {
@@ -102,11 +115,13 @@ public class Curatore {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	
-	
-	
-	
-	
-	
+
+	public List<Collezione> getCollezioni() {
+		return collezioni;
+	}
+
+	public void setCollezioni(List<Collezione> collezioni) {
+		this.collezioni = collezioni;
+	}	
 
 }

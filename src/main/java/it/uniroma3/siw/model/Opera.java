@@ -16,7 +16,7 @@ public class Opera {
 	private int anno;
 	
 	@Column(nullable=false)
-	private String description;
+	private String descrizione;
 
 	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
@@ -27,6 +27,17 @@ public class Opera {
 	//in Artista e Opera si riferiscono alla stessa cosa
 	@ManyToOne
 	private Artista artista;
+	
+	//Costruttore no args
+		public Opera() {
+			
+		}
+		
+		public Opera(String titolo, int anno, String descrizione) {
+			this.titolo = titolo;
+			this.anno = anno;
+			this.descrizione = descrizione;	
+		}
 	
 	/****************************************************************************************************/
 	/******************************************METODI GET E SET******************************************/
@@ -56,14 +67,28 @@ public class Opera {
 		this.anno = anno;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescrizione() {
+		return descrizione;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
-	
-	
+
+	public Collezione getCollezione() {
+		return collezione;
+	}
+
+	public void setCollezione(Collezione collezione) {
+		this.collezione = collezione;
+	}
+
+	public Artista getArtista() {
+		return artista;
+	}
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+	}
 	
 }
