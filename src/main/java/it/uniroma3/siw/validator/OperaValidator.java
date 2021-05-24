@@ -6,7 +6,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.service.OperaService;
 
@@ -20,19 +19,6 @@ public class OperaValidator implements Validator{
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return Opera.class.equals(clazz);
-	}
-
-	@Override
-	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome","required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome","required");
-
-public class OperaValidator {
-	@Autowired
-	private OperaService operaService;
-	
-	public boolean supports(Class<?> clazz) {
-		return Collezione.class.equals(clazz);
 	}
 
 	public void validate(Object target, Errors errors) {
