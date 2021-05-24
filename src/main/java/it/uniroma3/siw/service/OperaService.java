@@ -1,5 +1,7 @@
 package it.uniroma3.siw.service;
 
+import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,11 @@ public class OperaService {
 	public Opera inserisci(Opera opera) {
 		return operaRepository.save(opera);
 	}
-	
+
+	public List<Opera> search(String titolo){
+		return operaRepository.findByTitolo(titolo);
+	}
+
 	public Optional<Opera> findById(Long id) {
 		return operaRepository.findById(id);
 	}

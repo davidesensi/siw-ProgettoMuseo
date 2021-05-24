@@ -14,6 +14,7 @@ import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.service.OperaService;
 import it.uniroma3.siw.validator.OperaValidator;
 
+
 @Controller
 public class OperaController {
 
@@ -22,7 +23,6 @@ public class OperaController {
 	
 	@Autowired
 	private OperaService operaService;
-	
 	
 	@RequestMapping(value="/addOpera", method = RequestMethod.GET)
 	public String newOpera(@Validated @ModelAttribute("opera") Opera opera,Model model, BindingResult bindingResult) {
@@ -40,6 +40,8 @@ public class OperaController {
 	@RequestMapping(value="/opera/{id}", method = RequestMethod.GET)
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));
-		return "opere.html";
+
+		return "opera.html";
+
 	}
 }
