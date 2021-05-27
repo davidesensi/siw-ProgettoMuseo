@@ -36,8 +36,8 @@ public class Artista {
 
 	//Associazione OneToMany tra Artista e Opera, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
-	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private List <Opera>opere;
+	@OneToMany(mappedBy = "artista", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List <Opera> opere;
 
 	//Costruttore no args
 	public Artista() {

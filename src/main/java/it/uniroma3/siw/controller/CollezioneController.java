@@ -37,7 +37,7 @@ public class CollezioneController {
 		}
 	}
 	
-	@RequestMapping(value="/artista/{id}", method = RequestMethod.GET)
+	@RequestMapping(value="/collezione/{id}", method = RequestMethod.GET)
 	public String getCollezione(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("collezione", this.collezioneService.findById(id));
 		return "collezioni.html";

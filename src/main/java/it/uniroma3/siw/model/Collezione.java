@@ -27,8 +27,8 @@ public class Collezione {
 
 	//Associazione OneToMany tra Collezione e Opera, viene mappato per identicficare che  due riferiemnti 
 	//in Collezione e Opera si riferiscono alla stessa cosa
-	@OneToMany(mappedBy = "opera", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private List <Opera>opere;
+	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private List <Opera> opere;
 
 	//Costruttore no args
 	public Collezione() {
