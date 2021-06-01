@@ -1,0 +1,26 @@
+nav{
+  height:75px;
+  background:royalblue;
+}
+
+header{
+  height:100px;
+  background:lightskyblue;
+}
+
+form{
+  height:500px;
+  margin: 10px 10px;
+  background:gray;
+}
+
+
+div{
+  height:50px;
+  background:tomato;
+}
+
+footer{
+  height:200px;
+  background:black;
+}
