@@ -23,6 +23,22 @@
       
     	</section>
    	</div>
+	<div>
+	<form action="@{/addArtista}" method="POST">
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" class="${artista.nome}" /></span>
+			</div>		
+			<div>
+				<span>Cognome:</span>
+				<span><input type="text" class="${artista.cognome}" /></span>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+	</form>
+	
+	</div>
     <footer><a href="/">Home</a></footer>
 </body>
 </html>
