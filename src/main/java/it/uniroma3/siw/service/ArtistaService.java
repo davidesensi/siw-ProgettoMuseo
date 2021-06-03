@@ -25,8 +25,17 @@ public class ArtistaService {
 		return artistaRepository.findByNomeOrCognome(nome,cognome);
 	}
 
-	public Optional<Artista> findById(Long id) {
+	/*public Optional<Artista> findById(Long id) {
 		return artistaRepository.findById(id);
+	}*/
+	
+	@Transactional
+	public Artista findById(Long id) {
+		Optional<Artista> optional = artistaRepository.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 
 	@SuppressWarnings("unlikely-arg-type")

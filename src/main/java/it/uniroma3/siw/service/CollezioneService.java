@@ -19,8 +19,17 @@ public class CollezioneService {
 		return collezioneRepository.save(collezione);
 	}
 	
-	public Optional<Collezione> findById(Long id) {
+	/*public Optional<Collezione> findById(Long id) {
 		return collezioneRepository.findById(id);
+	}*/
+	
+	@Transactional
+	public Collezione findById(Long id) {
+		Optional<Collezione> optional = collezioneRepository.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 
 	@SuppressWarnings("unlikely-arg-type")

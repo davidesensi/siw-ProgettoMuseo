@@ -24,8 +24,17 @@ public class CuratoreService {
 		return curatoreRepository.findByNomeOrCognome(nome,cognome);
 	}
 
-	public Optional<Curatore> findById(Long id) {
+	/*public Optional<Curatore> findById(Long id) {
 		return curatoreRepository.findById(id);
+	}*/
+	
+	@Transactional
+	public Curatore findById(Long id) {
+		Optional<Curatore> optional = curatoreRepository.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 
 	@SuppressWarnings("unlikely-arg-type")

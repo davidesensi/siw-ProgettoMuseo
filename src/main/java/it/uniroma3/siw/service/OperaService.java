@@ -26,9 +26,18 @@ public class OperaService {
 		return operaRepository.findByTitolo(titolo);
 	}
 
-	public Optional<Opera> findById(Long id) {
+	/*public Optional<Opera> findById(Long id) {
 		return operaRepository.findById(id);
-	}
+	}*/
+	
+	@Transactional
+	public Opera findById(Long id) {
+		Optional<Opera> optional = operaRepository.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
+	}	
 
 	@SuppressWarnings("unlikely-arg-type")
 	public boolean alreadyExists(Opera opera) {
