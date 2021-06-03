@@ -1,0 +1,40 @@
+
+header{
+  height:40px;
+  background: lightblue;
+  padding:30px 20px;
+  
+}
+
+section{
+
+}
+
+p{
+  background: orange;
+  display:flex;
+  padding:3px;
+  margin:0px;
+}
+
+p.desc{
+  height:100px;
+  //probabilmente bisogna aggiungere la larghezza;
+}
+
+img{
+  height:200px;
+}
+
+p{
+  
+}
+
+div{
+  
+}
+
+footer{
+  height:50px;
+  background:tomato;
+}

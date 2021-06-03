@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.service.ArtistaService;
+import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.validator.ArtistaValidator;
 
 @Controller
@@ -23,19 +24,10 @@ public class MuseoController {
 	@Autowired
 	private ArtistaValidator artistaValidator;
 
-	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
-	public String getArtisti(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("artista", this.artistaService.findAll());
-		return "artisti.html";
-	}
+	@Autowired
+	private CollezioneService collezioneService;
 	
-	@RequestMapping(value="/artista/{id}", method = RequestMethod.GET)
-	public String getArtista(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("artista", this.artistaService.findById(id));
-		return "artista.html";
-	}
-	
-	@RequestMapping(value="/addArtista", method = RequestMethod.GET)
+	@RequestMapping(value="/addArtista", method = RequestMethod.POST)
 	public String newArtista(@Validated @ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
 		this.artistaValidator.validate(artista, bindingResult);
 		if(!bindingResult.hasErrors()) {
@@ -47,4 +39,36 @@ public class MuseoController {
 			return "index.html";
 		}
 	}
+
+	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
+	public String getArtisti(Model model) {
+		model.addAttribute("artisti", this.artistaService.findAll());
+		return "artisti.html";
+	}
+	
+	@RequestMapping(value="/artista/{id}", method = RequestMethod.GET)
+	public String getArtista(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("artista", this.artistaService.findById(id));
+		return "artista.html";
+	}
+	
+	@RequestMapping(value="/collezioni" , method= RequestMethod.GET)
+	public String getCollezioni(Model model) {
+		if(model.addAttribute("collezione", this.collezioneService.findAll())!=null) {
+			model.addAttribute("collezione", this.collezioneService.findAll());
+			return "collezioni.html";
+		}
+		else {
+			return "index.html";
+		}
+		
+	}
+	
+	@RequestMapping(value="/collezione/{id}", method = RequestMethod.GET)
+	public String getCollezione(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("collezione", this.collezioneService.findById(id));
+		return "collezione.html";
+	}
+	
+	
 }

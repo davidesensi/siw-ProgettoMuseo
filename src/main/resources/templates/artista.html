@@ -1,26 +1,15 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Artista</title>
-  </head>
-  <body>
-    
-    <header>NOMEARTISTA</header>
-    <section>
-      <p>Nome:</p>
-      <p>Cognome:</p>
-      <p>Data  di Nascita:</p>
-      <p>Data di Morte:</p>
-      <p>Luogo di Nascita</p>
-      <p>Luogo di Morte</p>
-      <p>Nazionalit√†:</p>
-      
-      <p>Opere:</p>
-       
-      <img src="https://www.bilanciozero.net/rinascimento/chiesarinascimento1/img_da_vinci_leonardo/vinci7.jpg">
-      <img src="https://www.bilanciozero.net/rinascimento/chiesarinascimento1/img_da_vinci_leonardo/uomo_vitruviano.JPG">
-      
-    </section>
-    <footer></footer>
-  </body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Artista</title></head>
+<body>
+† † <div>
+† † 	<h4>Dettagli Artista</h4>
+	<div>
+		<span th:text="${artista.nome}">Paolo</span>
+		<span th:text="${artista.cognome}">Rossi</span>
+		<span th:text="${artista.nazionalita}"></span>
+†† 	</div>
+† † </div>
+† † <footer><a href="/">Home</a></footer>
+</body>
 </html>

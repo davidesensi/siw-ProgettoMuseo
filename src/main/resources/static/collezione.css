@@ -1,0 +1,35 @@
+
+header{
+  height:40px;
+  background: lightblue;
+  padding:30px 20px;
+  
+}
+
+section{
+ height:400px;
+ background:orange;
+}
+
+p{
+  display:flex;
+  padding:3px;
+  margin:0px;
+}
+
+
+#opera{
+  background: orange;
+  display:flex;
+  padding:3px;
+  margin:0px;
+}
+
+div{
+  
+}
+
+footer{
+  height:50px;
+  background:tomato;
+}
