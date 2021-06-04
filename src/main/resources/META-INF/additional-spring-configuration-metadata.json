@@ -8,5 +8,10 @@
     "name": "message_IT.properties",
     "type": "java.lang.String",
     "description": "A description for 'message_IT.properties'"
+  },
+  {
+    "name": "spring.sql.init.platform",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.sql.init.platform'"
   }
 ]}

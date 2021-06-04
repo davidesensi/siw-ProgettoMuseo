@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head></head>
+<head>
+<meta charset="UTF-8" />
+<link href="index.css" rel="stylesheet">
+<title th:text="${title}"></title>
+</head>
 <body>
-    <div>
-    	<h4>Benvenuto nel Museo</h4>
-	</div>
+Â  Â  	<h4>Benvenuto nel Museo</h4>
+	
 	<div>
 		<nav> 	
 			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
@@ -16,9 +19,6 @@
 		<a th:href="@{/login}">Accedi</a>
 		<a th:href="@{/register}">Registrati</a>
    	</div>
-	<div>
-	
-	</div>
-    <footer><a href="/">Home</a></footer>
+Â  Â  <footer><a href="/">Home</a></footer>
 </body>
 </html>

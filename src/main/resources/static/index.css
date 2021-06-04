@@ -1,11 +1,28 @@
 nav{
   height:75px;
-  background:royalblue;
+  background:lightskyblue;
 }
 
-header{
-  height:100px;
-  background:lightskyblue;
+
+h4{
+	height:150px;
+	color:khaki;
+	margin:20px;
+	text-align:center;
+	line-height:30px;
+	font-size:100px;
+	font-weight:bold;
+	font-family:"Times New Roman",Georgia,Serif;
+	
+	
+}
+
+body{
+	background-image:url("sfondo2-museo.jpg");
+	background-size:100%;
+	background-repeat:no-repeat;
+	width:100%;
+	height:100%;
 }
 
 form{
@@ -16,11 +33,18 @@ form{
 
 
 div{
-  height:50px;
+  height:100px;
   background:tomato;
+
+}
+
+a{
+	margin:20px;
+	color:black;
 }
 
 footer{
-  height:200px;
-  background:black;
+  height:100px;
+  background:lightgray;
+  padding:auto;
 }
