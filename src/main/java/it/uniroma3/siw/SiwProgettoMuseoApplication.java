@@ -23,6 +23,10 @@ public class SiwProgettoMuseoApplication {
 		Artista DaVinci = new Artista();
 		DaVinci.setNome("Leonardo");
 		DaVinci.setCognome("Da Vinci");
+		//DaVinci.setDataN("1452/04/15");
+		DaVinci.setLuogoN("Anchiano");
+		//DaVinci.setDataM(1519-05-02);
+		DaVinci.setLuogoM("Amboise");
 		DaVinci.setNazionalita("Italiana");
 		
 		Opera o = new Opera();
@@ -33,9 +37,13 @@ public class SiwProgettoMuseoApplication {
 		Collezione c = new Collezione();
 		c.setNome("Leonardo Il Genio");
 		c.addOpera(o);
+<<<<<<< Updated upstream
 		
 		
 		
+=======
+				
+>>>>>>> Stashed changes
 		EntityTransaction tx = em.getTransaction();
 		
 		tx.begin();

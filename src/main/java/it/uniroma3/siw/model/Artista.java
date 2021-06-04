@@ -16,15 +16,15 @@ public class Artista {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private String nome;
 
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private String cognome;
 
 	//@Column(nullable=false)
 	private LocalDate dataN;
-
+	
 	//@Column(nullable=false)
 	private String luogoN;
 

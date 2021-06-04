@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<<<<<<< Updated upstream
 <head>
 <meta charset="UTF-8" />
 <link href="css/index.css" rel="stylesheet">
@@ -7,17 +8,32 @@
 </head>
 <body>
     	<h4>Benvenuto nel Museo</h4>
+=======
+<head><link th:href="@{/css/index.css}" rel="stylesheet">
+</head>
+<body>
+>>>>>>> Stashed changes
 	<div>
+	<h4>Benvenuto nel Museo</h4>
+	</div>
 		<nav> 	
+<<<<<<< Updated upstream
 			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+=======
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  | 
+>>>>>>> Stashed changes
       		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
       		<a href="informazioni.html">Informazioni</a>
     	</nav>
-	</div>
-	<div>
+    <div>
 		<a th:href="@{/login}">Accedi</a>
 		<a th:href="@{/register}">Registrati</a>
    	</div>
+<<<<<<< Updated upstream
     <footer><a href="/">Home</a></footer>
+=======
+   	
+ <footer><a href="/">Home</a></footer>
+>>>>>>> Stashed changes
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> </head>
+<body>
+	<div>
+		<h4>Inserimento Artista</h4>
+	</div>
+	
+	<form th:action="@{/artistaForm}">
+		<table>
+        <tr>
+            <td>Nome</td>
+            <td><input type="text" placeholder="nome" required
+                       th:field="${artista.nome}"/></td>
+        </tr>
+        <tr>
+            <td>Cognome</td>
+            <td><input type="text" placeholder="cognome" required
+                       th:field="${artista.cognome}"/></td>
+        </tr>
+        <tr>
+            <td>Data di nascita</td>
+            <td><input type="date" placeholder="dataN" 
+                       th:field="${artista.dataN}"/></td>
+        </tr>
+        <tr>
+            <td>Luogo di nascita</td>
+            <td><input type="text" placeholder="luogoN" required
+                       th:field="${artista.luogoN}"/></td>
+        </tr>
+        <tr>
+            <td>Data di morte</td>
+            <td><input type="date" placeholder="dataM"
+                       th:field="${artista.dataM}"/></td>
+        </tr>
+        <tr>
+            <td>Luogo di morte</td>
+            <td><input type="text" placeholder="luogoM"
+                       th:field="${artista.luogoM}"/></td>
+        </tr>
+        <tr>
+            <td>Nazionalita</td>
+            <td><input type="text" placeholder="nazionalita" required
+                       th:field="${artista.nazionalita}"/></td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Inserisci Artista</button>
+            </td>
+        </tr>
+    </table>
+	</form>
+	
+    <footer><a href="/">Home</a></footer>
+</body>
+</html>

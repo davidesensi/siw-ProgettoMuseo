@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,11 @@ import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.OperaService;
+<<<<<<< Updated upstream
 import it.uniroma3.siw.validator.ArtistaValidator;
+=======
+//import it.uniroma3.siw.validator.ArtistaValidator;
+>>>>>>> Stashed changes
 
 @Controller
 public class MuseoController {
@@ -22,12 +26,13 @@ public class MuseoController {
 	@Autowired
 	private ArtistaService artistaService;
 	
-	@Autowired
-	private ArtistaValidator artistaValidator;
+	//@Autowired
+	//private ArtistaValidator artistaValidator;
 
 	@Autowired
 	private CollezioneService collezioneService;
 	
+<<<<<<< Updated upstream
 	@Autowired
 	private OperaService operaService;
 	
@@ -43,6 +48,24 @@ public class MuseoController {
 			return "index";
 		}
 	}
+=======
+
+	@RequestMapping(value="/artistaForm", method = RequestMethod.GET)
+	public String newArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
+		//this.artistaValidator.validate(artista, bindingResult);
+		//if(!bindingResult.hasErrors()) {
+			this.artistaService.save(artista);
+			model.addAttribute("artisti",this.artistaService.findAll());
+			return "artistaForm.html";
+	}
+		/*}
+		else {
+			return "index.html";
+		}*/
+	
+	@Autowired
+	private OperaService operaService;
+>>>>>>> Stashed changes
 
 	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
 	public String getArtisti(Model model) {
@@ -68,6 +91,7 @@ public class MuseoController {
 	public String getCollezione(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("collezione", this.collezioneService.findById(id));
 		return "collezione";
+<<<<<<< Updated upstream
 	}
 	
 	@RequestMapping(value="/opere" , method= RequestMethod.GET)
@@ -76,6 +100,16 @@ public class MuseoController {
 		return "opere";
 	}
 	
+=======
+	}
+	
+	@RequestMapping(value="/opere" , method= RequestMethod.GET)
+	public String getOpere(Model model) {
+		model.addAttribute("opere", this.operaService.findAll());
+		return "opere";
+	}
+	
+>>>>>>> Stashed changes
 	@RequestMapping(value="/opera/{id}", method = RequestMethod.GET)
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));
