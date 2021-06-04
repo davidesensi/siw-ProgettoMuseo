@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8" />
-	<link href="src/main/resources/static/index.css">
-	<title>Museo</title>
-</head>
+<head></head>
 <body>
-Â  Â  <div>
-Â  Â  	<h4>Benvenuto nel Museo</h4>
+    <div>
+    	<h4>Benvenuto nel Museo</h4>
 	</div>
 	<div>
 		<nav> 	
@@ -17,15 +13,12 @@
     	</nav>
 	</div>
 	<div>
-		<section>
-      			<img src="https://www.bilanciozero.net/rinascimento/chiesarinascimento1/img_da_vinci_leonardo/vinci7.jpg">
-      			<img src="https://www.bilanciozero.net/rinascimento/chiesarinascimento1/img_da_vinci_leonardo/uomo_vitruviano.JPG">
-      
-    	</section>
-Â Â  	</div>
+		<a th:href="@{/login}">Accedi</a>
+		<a th:href="@{/register}">Registrati</a>
+   	</div>
 	<div>
 	
 	</div>
-Â  Â  <footer><a href="/">Home</a></footer>
+    <footer><a href="/">Home</a></footer>
 </body>
 </html>
