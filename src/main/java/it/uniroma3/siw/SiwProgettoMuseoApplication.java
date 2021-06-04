@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import it.uniroma3.siw.model.Artista;
+import it.uniroma3.siw.model.Collezione;
+import it.uniroma3.siw.model.Opera;
 
 @SpringBootApplication
 public class SiwProgettoMuseoApplication {
@@ -23,11 +25,24 @@ public class SiwProgettoMuseoApplication {
 		DaVinci.setCognome("Da Vinci");
 		DaVinci.setNazionalita("Italiana");
 		
+		Opera o = new Opera();
+		o.setTitolo("La Gioconda");
+		o.setAnno(1492);
+		o.setArtista(DaVinci);
+		
+		Collezione c = new Collezione();
+		c.setNome("Leonardo Il Genio");
+		c.addOpera(o);
+		
+		
+		
 		EntityTransaction tx = em.getTransaction();
 		
 		tx.begin();
 		
 		em.persist(DaVinci);
+		em.persist(o);
+		em.persist(c);
 		
 		tx.commit();
 		

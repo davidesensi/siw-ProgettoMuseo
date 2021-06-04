@@ -13,12 +13,13 @@ h4{
 	font-size:100px;
 	font-weight:bold;
 	font-family:"Times New Roman",Georgia,Serif;
+	border-color:black;
 	
 	
 }
 
 body{
-	background-image:url("sfondo2-museo.jpg");
+	background-image:url("images/sfondo2-museo.jpg");
 	background-size:100%;
 	background-repeat:no-repeat;
 	width:100%;
@@ -33,7 +34,7 @@ form{
 
 
 div{
-  height:100px;
+  height:15%;
   background:tomato;
 
 }
@@ -44,7 +45,9 @@ a{
 }
 
 footer{
-  height:100px;
+  height:15%;
   background:lightgray;
   padding:auto;
+  margin-top:10%;
+  margin-bottom:10%
 }

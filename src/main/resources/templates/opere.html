@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<link href="artista.css" rel="stylesheet">
+	<title>Opere</title>
+</head>
+<body>
+  <h4>Elenco Opere:</h4>
+    <ul>
+		<li th:each="opera : ${opere}">
+		<a href="opera.html" 
+		   th:href="@{'/opera' + '/' + ${opera.id}}" 
+		   th:text="|${opera.titolo}|">Nome cognome</a>
+		</li>
+    </ul>
+
+    <footer><a href="/">Home</a></footer>
+</body>
+</html>

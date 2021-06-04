@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Opera</title></head>
+<body>
+    <div>
+    	<h4>Dettagli Opera</h4>
+	<div th:object=${opera}>
+		<span th:text="*{titolo}">La Primavera</span>
+		<span th:text="*{descrizione}">Desc</span>
+   	</div>
+    </div>
+    <footer><a href="/">Home</a></footer>
+</body>
+</html>

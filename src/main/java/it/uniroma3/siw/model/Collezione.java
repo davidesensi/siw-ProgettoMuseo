@@ -40,6 +40,10 @@ public class Collezione {
 		this.descrizione = descrizione;	
 		this.curatore = curatore;
 	}
+	
+	public void addOpera(Opera o) {
+		this.opere.add(o);
+	}
 
 
 	/****************************************************************************************************/

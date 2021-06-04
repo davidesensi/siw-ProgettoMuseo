@@ -2,16 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<link href="index.css" rel="stylesheet">
-<title th:text="${title}"></title>
+<link href="css/index.css" rel="stylesheet">
+<title>Index</title>
 </head>
 <body>
     	<h4>Benvenuto nel Museo</h4>
-	
 	<div>
 		<nav> 	
 			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-      		<a href="Collezioni.html">Collezioni</a>  | 
+      		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
       		<a href="informazioni.html">Informazioni</a>
     	</nav>
 	</div>

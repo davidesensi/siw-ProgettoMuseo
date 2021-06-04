@@ -15,7 +15,7 @@ public class Opera {
 	@Column(nullable=false)
 	private int anno;
 
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private String descrizione;
 
 	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 

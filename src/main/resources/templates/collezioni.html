@@ -7,7 +7,7 @@
 <body>
   <h4>Elenco Collezioni:</h4>
     <ul>
-		<li th:each="collezione : ${collezione}">
+		<li th:each="collezione : ${collezioni}">
 		<a href="collezione.html" th:href="@{'/collezione' + '/' + ${collezione.id}}" th:text="|${collezione.nome}|">Nome</a>
 		</li>
     </ul>
