@@ -19,7 +19,7 @@ public class SiwProgettoMuseoApplication {
 		SpringApplication.run(SiwProgettoMuseoApplication.class, args);
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("museo-unit");
 		EntityManager em = emf.createEntityManager();
-		
+					
 		Artista DaVinci = new Artista();
 		DaVinci.setNome("Leonardo");
 		DaVinci.setCognome("Da Vinci");
@@ -33,10 +33,12 @@ public class SiwProgettoMuseoApplication {
 		o.setTitolo("La Gioconda");
 		o.setAnno(1492);
 		o.setArtista(DaVinci);
-		
+				
 		Collezione c = new Collezione();
 		c.setNome("Leonardo Il Genio");
 		c.addOpera(o);
+		
+		o.setCollezione(c);
 		
 		EntityTransaction tx = em.getTransaction();
 		

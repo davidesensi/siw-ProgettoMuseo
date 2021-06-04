@@ -5,15 +5,73 @@
 	<link th:href="@{/css/artista.css}" rel="stylesheet">
 </head>
 <body>
-    <div>
-    	<h4>Dettagli Artista</h4>
+    <div th:if="${artista}" th:object="${artista}">
+		<h1><a>Informazioni </a>
+			<a th:text="*{nome}"></a>
+			<a th:text="*{cognome}"></a></h1>
 	<div>
-		<div th:if="${artista}" th:object="${artista}">
-			<h5 th:text="*{nome}">nome</h5>
-			<h5 th:text="*{cognome}">cognome</h5>
-			<span th:text="*{nazionalita}">descrizione </span>
-   		</div>
-   		<div>
+	
+	<table th:if="${artista}" th:object="${artista}">
+		<tr>
+			<td>Nome:</td>
+			<td th:text="*{nome}"></td>
+		</tr>			
+		<tr>
+			<td>Cognome:</td>
+			<td th:text="*{cognome}"></td>
+		</tr>
+		<tr>
+			<td>Nazionalit&agrave;:</td>
+			<td th:text="*{nazionalita}"></td>
+		</tr>
+   	</table>
+   	
+   	<div>
+   		<h4>Elenco Opere:</h4>
+   		<ul>
+			<li th:each="opera : ${opere}">
+			<a href="opera.html" 
+			   th:href="@{'/opera' + '/' + ${opera.id}}" 
+			   th:text="|${opera.titolo}|">Titolo</a>
+			</li>
+    	</ul>   		
+   	</div>
+   		
+   		<!-- 
+   		<form th:if="${artista}" th:object="${artista}">
+   		<table>
+			<tr>
+				<td>Nome:</td>
+				<td th:text="*{nome}"></td>
+			</tr>			
+			<tr>
+				<td>Cognome:</td>
+				<td th:text="*{cognome}"></td>
+			</tr>
+			<tr>
+				<td>Data di nascita:</td>
+				<td th:text="*{dataN}"></td>
+			</tr>			
+			<tr>
+				<td>Luogo di nascita:</td>
+				<td th:text="*{luogN}"></td>
+			</tr>
+			<tr>
+				<td>Data di morte:</td>
+				<td th:text="*{dataM}"></td>
+			</tr>			
+			<tr>
+				<td>Luogo di morte:</td>
+				<td th:text="*{luogM}"></td>
+			</tr>
+			<tr>
+				<td>Nazionalita:</td>
+				<td th:text="*{nazionalita}"></td>
+			</tr>
+		</table>
+		</form>
+		-->
+		<div>
 			<ul>
 				<li th:each="opera : ${opere}">
 				<a href="opera.html" 

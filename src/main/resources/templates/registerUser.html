@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> </head>
+<head> 
+	<link href="css/index.css" rel="stylesheet">
+</head>
 <body>
-	<div>
-    	<h4>Registrazione</h4>
+	<h4>Registrazione</h4>
+	
 	<form th:action="@{/register}" method="POST">
     <table>
         <tr>
@@ -36,12 +38,12 @@
         </tr>
         <tr>
             <td>
-                <button type="submit">Registra</button>
+                <button type="submit">Registrati</button>
             </td>
         </tr>
     </table>
 	</form>
-	</div>
+	
     <footer><a href="/">Home</a></footer>
 </body>
 </html>
