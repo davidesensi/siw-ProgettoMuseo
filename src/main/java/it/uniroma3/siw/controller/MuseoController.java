@@ -14,11 +14,8 @@ import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.OperaService;
-<<<<<<< Updated upstream
-import it.uniroma3.siw.validator.ArtistaValidator;
-=======
 //import it.uniroma3.siw.validator.ArtistaValidator;
->>>>>>> Stashed changes
+//import it.uniroma3.siw.validator.ArtistaValidator;
 
 @Controller
 public class MuseoController {
@@ -31,25 +28,10 @@ public class MuseoController {
 
 	@Autowired
 	private CollezioneService collezioneService;
-	
-<<<<<<< Updated upstream
+
 	@Autowired
 	private OperaService operaService;
 	
-	@RequestMapping(value="/addArtista", method = RequestMethod.POST)
-	public String newArtista(@Validated @ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
-		this.artistaValidator.validate(artista, bindingResult);
-		if(!bindingResult.hasErrors()) {
-			this.artistaService.save(artista);
-			model.addAttribute("artisti",this.artistaService.findAll());
-			return "artisti";
-		}
-		else {
-			return "index";
-		}
-	}
-=======
-
 	@RequestMapping(value="/artistaForm", method = RequestMethod.GET)
 	public String newArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
 		//this.artistaValidator.validate(artista, bindingResult);
@@ -62,10 +44,6 @@ public class MuseoController {
 		else {
 			return "index.html";
 		}*/
-	
-	@Autowired
-	private OperaService operaService;
->>>>>>> Stashed changes
 
 	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
 	public String getArtisti(Model model) {
@@ -91,7 +69,6 @@ public class MuseoController {
 	public String getCollezione(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("collezione", this.collezioneService.findById(id));
 		return "collezione";
-<<<<<<< Updated upstream
 	}
 	
 	@RequestMapping(value="/opere" , method= RequestMethod.GET)
@@ -100,16 +77,6 @@ public class MuseoController {
 		return "opere";
 	}
 	
-=======
-	}
-	
-	@RequestMapping(value="/opere" , method= RequestMethod.GET)
-	public String getOpere(Model model) {
-		model.addAttribute("opere", this.operaService.findAll());
-		return "opere";
-	}
-	
->>>>>>> Stashed changes
 	@RequestMapping(value="/opera/{id}", method = RequestMethod.GET)
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));

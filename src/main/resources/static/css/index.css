@@ -1,13 +1,14 @@
 nav{
-  height:75px;
-  background:lightskyblue;
+	height:75px;
+	background:lightskyblue;
 }
 
 
 h4{
+	
 	height:150px;
-	color:khaki;
-	margin:20px;
+	color: red;
+	margin:50px;
 	text-align:center;
 	line-height:30px;
 	font-size:100px;
@@ -19,10 +20,11 @@ h4{
 }
 
 body{
-	background-image:url("images/sfondo2-museo.jpg");
+	background-image:url("/images/sfondo.jpg");
 	background-size:100%;
 	background-repeat:no-repeat;
 	width:100%;
+	margin-left: 0%;
 	height:100%;
 }
 

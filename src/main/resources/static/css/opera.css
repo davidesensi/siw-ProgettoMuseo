@@ -6,10 +6,6 @@ header{
   
 }
 
-section{
-
-}
-
 p{
   background: orange;
   display:flex;
@@ -19,7 +15,7 @@ p{
 
 p.desc{
   height:100px;
-  //probabilmente bisogna aggiungere la larghezza;
+  /*probabilmente bisogna aggiungere la larghezza;*/
 }
 
 img{

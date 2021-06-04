@@ -37,13 +37,7 @@ public class SiwProgettoMuseoApplication {
 		Collezione c = new Collezione();
 		c.setNome("Leonardo Il Genio");
 		c.addOpera(o);
-<<<<<<< Updated upstream
 		
-		
-		
-=======
-				
->>>>>>> Stashed changes
 		EntityTransaction tx = em.getTransaction();
 		
 		tx.begin();

@@ -8,8 +8,6 @@ import javax.persistence.*;
 
 @Entity
 public class Artista {
-
-	//cazzo leggi
 	//definizioni attributi
 
 	@Id
