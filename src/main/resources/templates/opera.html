@@ -2,13 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><title>Opera</title></head>
 <body>
-    <div>
-    	<h4>Dettagli Opera</h4>
+	<div>
+		<h4>Dettagli Opera</h4>
 	<div th:object=${opera}>
 		<span th:text="*{titolo}">La Primavera</span>
+		<span th:text="*{anno}">1500</span>
 		<span th:text="*{descrizione}">Desc</span>
-   	</div>
-    </div>
-    <footer><a href="/">Home</a></footer>
+		
+	</div>
+	<div>
+		<a href="artista.html" 
+			   th:href="@{'/{opera.artista}' + '/' + ${opera.artista.id}}" 
+			   th:text="|${opera.artista.nome} ${opera.artista.cognome}| ">Nome Cognome</a>
+	</div>
+	</div>
+	<footer><a href="/">Home</a></footer>
 </body>
 </html>

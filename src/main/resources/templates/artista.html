@@ -5,7 +5,7 @@
 	<link th:href="@{/css/artista.css}" rel="stylesheet">
 </head>
 <body>
-    <div th:if="${artista}" th:object="${artista}">
+	<div th:if="${artista}" th:object="${artista}">
 		<h1><a>Informazioni </a>
 			<a th:text="*{nome}"></a>
 			<a th:text="*{cognome}"></a></h1>
@@ -78,10 +78,10 @@
 				   th:href="@{'/opera' + '/' + ${opera.id}}" 
 				   th:text="|${opera.titolo}|">Nome cognome</a>
 				</li>
-    		</ul>   		
+    		</ul>
    		</div>
-   	</div>
-    </div>
-    <footer><a href="/">Home</a></footer>
+	</div>
+	</div>
+	<footer><a href="/">Home</a></footer>
 </body>
 </html>

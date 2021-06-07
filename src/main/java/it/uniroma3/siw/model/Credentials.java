@@ -27,7 +27,7 @@ public class Credentials {
 	@Column(nullable = false)
 	private String role;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
 	private User user;
 
 	public Long getId() {

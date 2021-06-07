@@ -17,10 +17,11 @@ public class Opera {
 
 	//@Column(nullable=false)
 	private String descrizione;
+	//private String img;
 
 	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.ALL})
 	private Collezione collezione;
 
 	//Associazione ManyToOne tra Opera e Artista, viene mappato per identicficare che  due riferiemnti 
@@ -92,5 +93,14 @@ public class Opera {
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
+
+	/*public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+	*/
 
 }

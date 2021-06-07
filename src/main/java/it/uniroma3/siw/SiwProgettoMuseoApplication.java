@@ -17,7 +17,7 @@ public class SiwProgettoMuseoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SiwProgettoMuseoApplication.class, args);
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("museo-unit");
+		/*EntityManagerFactory emf = Persistence.createEntityManagerFactory("museo-unit");
 		EntityManager em = emf.createEntityManager();
 					
 		Artista DaVinci = new Artista();
@@ -52,7 +52,7 @@ public class SiwProgettoMuseoApplication {
 		
 		em.close();
 		emf.close();
-		
+		*/
 	}
 
 }
