@@ -11,7 +11,7 @@
 			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
 	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
 	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-	   		<a href="informazioni.html" >Informazioni</a>
+	   		<a href="informazioni.html"  th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
 	   	</nav>
 		<table th:object=${opera}>
 			<tr>
@@ -30,14 +30,13 @@
 				<td>Autore:</td>
 				<td th:text="|${opera.artista.nome} ${opera.artista.cognome}|"></td>
 				<td><a href="artista.html" 
-				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}"
-				       th:text="|${opera.artista.nome} ${opera.artista.cognome}|">Nome Cognome</a></td>
+				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}">Maggiori Informazioni</a></td>
 			</tr>
 			<tr>
 				<td>Collezione:</td>
 				<td th:text="${opera.collezione.nome}"></td>
 				<td><a  href="collezione.html"
-						th:href="@{'/opera.collezione' + '/' + ${opera.collezione.id}}">Maggiori informazioni</a></td>
+						th:href="@{'/opera.collezione' + '/' + ${opera.collezione.id}}">Maggiori Informazioni</a></td>
 			</tr>				
 		</table>
 	</div>

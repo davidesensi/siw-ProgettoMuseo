@@ -15,13 +15,16 @@
 	   	</nav>
    	
 		<table>
-			<tr>
-				<td th:href="@{/artisti}">Elenco artisti</td>
-			</tr>
-			<tr>
-				<td th:href="@{/logout}">Logout</td>
-			</tr>
-		</table>
+   			<tr>
+   				<td> <a  th:action="@{/admin/artisti}" th:href="@{/artisti}">Elenco Artisti: </a></td>
+   			</tr>
+   			<tr>
+   				<td> <a th:href="@{/admin/artistaForm}">Aggiungi Artista </a></td>
+   			</tr>
+   			<tr>
+   				<td> <a th:action="@{/logout}" th:href="@{/logout}">Logout </a></td>
+   			</tr>
+   		</table>
     </div>
     <footer><a href="/">Home</a></footer>
 </body>

@@ -71,6 +71,17 @@ public class AuthenticationController {
         }
         return "home";
     }
+    
+    @RequestMapping(value = "/admin/artistaForm", method = RequestMethod.GET)
+    public String adminAggiungeArtista(Model model) {
+        
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		return "admin/artistaForm";
+        }
+        return "home";
+    }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") User user,
