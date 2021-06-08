@@ -5,23 +5,29 @@
 	
 	 </head>
 <body>
-    	<h4>INFORMAZIONI</h4>
- 	
-	<nav> 	
-		<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-   		<a href="templates/informazioni.html"  th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
-   	</nav>
-   	<div>
-   		<h3>Esame di Sistemi informatici sul Web</h3>
-   		<h3>Questa &eacute; la soluzione del sito del museo</h3>
-   		<h3>Il sito &eacute; stato creato e messo appunto dagli studenti:</h3>
-   		<h3>Sensi Davide - 508825 - Ing.Informatica</h3>
-   		<h3>Zappasodi Stefano - 508857 - Ing.Informatica</h3>
+	<nav class="InOut">
+ 			<a th:href="@{/login}">Accedi </a>	|
+ 			<a th:href="@{/register}">Registrati </a>	|
+ 			<a th:action="@{/logout}" th:href="@{/logout}">Logout </a>
+ 	</nav>
+	<h4>INFORMAZIONI</h4>
+ 	<div>
+		<nav> 	
+			<a href="/">Home</a>	|
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="templates/informazioni.html"  th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	   	</nav>
+	   	<div>
+	   		<h3>Esame di Sistemi informatici sul Web</h3>
+	   		<h3>Questa &eacute; la soluzione del sito del museo</h3>
+	   		<h3>Il sito &eacute; stato creato e messo appunto dagli studenti:</h3>
+	   		<h3>Sensi Davide - 508825 - Ing.Informatica</h3>
+	   		<h3>Zappasodi Stefano - 508857 - Ing.Informatica</h3>
+	   	</div>
    	</div>
    	
-   	
-    <footer><a href="/">Home</a></footer>
+    <footer></footer>
 </body>
 </html>

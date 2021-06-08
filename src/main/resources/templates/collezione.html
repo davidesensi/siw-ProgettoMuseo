@@ -5,9 +5,15 @@
 	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
+	<nav class="InOut">
+ 			<a th:href="@{/login}">Accedi </a>	|
+ 			<a th:href="@{/register}">Registrati </a>	|
+ 			<a th:action="@{/logout}" th:href="@{/logout}">Logout </a>
+ 	</nav>
 	<h4>Dettagli Collezione</h4>
  	<div>
 		<nav> 	
+			<a href="/">Home</a>	|
 			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
 	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
 	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
@@ -34,6 +40,6 @@
 			</tr>
 		</table>
 	</div>
-	<footer><a href="/">Home</a></footer>
+	<footer></footer>
 </body>
 </html>

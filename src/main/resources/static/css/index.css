@@ -3,6 +3,13 @@ nav {
 	background: lightskyblue;
 }
 
+.InOut {
+	text-align: right;
+	background: red;
+	margin-left: 77%;
+	margin-right: 1%;
+}
+
 h4 {
 	height: 20%px;
 	color: red;
