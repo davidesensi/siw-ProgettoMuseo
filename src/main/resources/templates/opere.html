@@ -3,18 +3,28 @@
 <head>
 	<meta charset="UTF-8" />
 	<link href="artista.css" rel="stylesheet">
+	<link th:href="@{/css/index.css}" rel="stylesheet">
 	<title>Opere</title>
 </head>
 <body>
-  <h4>Elenco Opere:</h4>
-    <ul>
-		<li th:each="opera : ${opere}">
-		<a href="opera.html" 
-		   th:href="@{'/opera' + '/' + ${opera.id}}" 
-		   th:text="|${opera.titolo}|">Nome cognome</a>
-		</li>
-    </ul>
-
+	<h4>Elenco Opere:</h4>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="/informazioni.html">Informazioni</a>
+	   	</nav>
+	    <table>
+			<tr th:each="opera : ${opere}">
+				<td>
+					<a href="opera.html" 
+					   th:href="@{'/opera' + '/' + ${opera.id}}" 
+					   th:text="|${opera.titolo}|">Nome cognome</a>
+				</td>
+			</tr>
+	    </table>
+	</div>
     <footer><a href="/">Home</a></footer>
 </body>
 </html>

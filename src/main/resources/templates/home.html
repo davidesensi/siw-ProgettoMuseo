@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head> </head>
+	<head>
+		<link th:href="@{/css/index.css}" rel="stylesheet">
+	
+	 </head>
 <body>
-    <div>
-    	<h4>Menu</h4>
-		<div>
-			<a th:href="@{/artisti}">Elenco artisti</a>
-   		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
+	<h4>Menu</h4>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	   	</nav>
+   	
+		<table>
+			<tr>
+				<td th:href="@{/artisti}">Elenco artisti</td>
+			</tr>
+			<tr>
+				<td th:href="@{/logout}">Logout</td>
+			</tr>
+		</table>
     </div>
     <footer><a href="/">Home</a></footer>
 </body>

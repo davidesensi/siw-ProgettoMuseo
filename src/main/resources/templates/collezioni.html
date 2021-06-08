@@ -3,18 +3,27 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Collezioni</title>
-	<link th:href="@{/css/collezione.css}" rel="stylesheet">
+	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
-  <h4>Elenco Collezioni:</h4>
-    <ul>
-		<li th:each="collezione : ${collezioni}">
-		<a href="collezione.html" 
-		   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
-		   th:text="|${collezione.nome}|">Nome</a>
-		</li>
-    </ul>
-
+	<h4>Elenco Collezioni:</h4>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html">Informazioni</a>
+	   	</nav>
+	    <table>
+			<tr th:each="collezione : ${collezioni}">
+				<td>
+					<a href="collezione.html" 
+					   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
+					   th:text="|${collezione.nome}|">Nome</a>
+				</td>
+			</tr>
+	    </table>
+	</div>
     <footer><a href="/">Home</a></footer>
 </body>
 </html>

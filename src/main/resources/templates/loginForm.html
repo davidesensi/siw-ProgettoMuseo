@@ -5,25 +5,33 @@
 </head>
 <body>
 	<h4>Login</h4>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	   	</nav>
 		
-	<form th:action="@{/login}" method="POST">
-	<table>
-			<tr>
-				<td>Username:</td>
-				<td><input name="username" type="text" required /></td>
-			</tr>		
-			
-			<tr>
-				<td>Password:</td>
-				<td><input name="password" type="password" required /></td>
-			</tr>
-			<tr>
-				<td><button type="submit">Login</button></td>
-			
-				<td><button><a th:href="@{/register}">Registrati</a></button></td>
-			</tr>
-	</table>
-	</form>
+		<form th:action="@{/login}" method="POST">
+			<table>
+				<tr>
+					<td>Username:</td>
+					<td><input name="username" type="text" required /></td>
+				</tr>		
+				
+				<tr>
+					<td>Password:</td>
+					<td><input name="password" type="password" required /></td>
+				</tr>
+				<tr>
+					<td><button type="submit">Login</button></td>
+				
+					<td><button><a th:href="@{/register}">Registrati</a></button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
     <footer><a href="/">Home</a></footer>
 </body>
 </html>

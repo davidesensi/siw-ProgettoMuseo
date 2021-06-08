@@ -6,21 +6,24 @@
 <title>Index</title>
 </head>
 <body>
-
  	<h4>Benvenuto nel Museo</h4>
- 	
-	<nav> 	
-		<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-   		<a href="informazioni.html">Informazioni</a>
-   	</nav>
-   	
-    <div>
-		<a th:href="@{/login}">Accedi</a>
-		<a th:href="@{/register}">Registrati</a>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	   	</nav>
+   		
+   		<table>
+   			<tr>
+   				<td> <a th:href="@{/login}">Accedi </a></td>
+   			</tr>
+   			<tr>
+   				<td> <a th:href="@{/register}">Registrati </a></td>
+   			</tr>
+   		</table>
    	</div>
-   	
    	<footer><a href="/">Home</a></footer>
 </body>
 </html>

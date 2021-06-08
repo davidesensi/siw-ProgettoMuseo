@@ -60,9 +60,7 @@ public class MuseoController {
 	@RequestMapping(value="/collezioni" , method= RequestMethod.GET)
 	public String getCollezioni(Model model) {
 			model.addAttribute("collezioni", this.collezioneService.findAll());
-			return "collezioni";
-	
-		
+			return "collezioni";		
 	}
 	
 	@RequestMapping(value="/collezione/{id}", method = RequestMethod.GET)
@@ -81,8 +79,6 @@ public class MuseoController {
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));
 		return "opera";
-	}
-	
-	
+	}	
 	
 }

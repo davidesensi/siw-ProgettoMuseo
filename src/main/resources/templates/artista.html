@@ -2,44 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Artista</title>
-	<link th:href="@{/css/artista.css}" rel="stylesheet">
+	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
-	<div th:if="${artista}" th:object="${artista}">
-		<h1><a>Informazioni </a>
-			<a th:text="*{nome}"></a>
-			<a th:text="*{cognome}"></a></h1>
-	<div>
-	
-	<table th:if="${artista}" th:object="${artista}">
-		<tr>
-			<td>Nome:</td>
-			<td th:text="*{nome}"></td>
-		</tr>			
-		<tr>
-			<td>Cognome:</td>
-			<td th:text="*{cognome}"></td>
-		</tr>
-		<tr>
-			<td>Nazionalit&agrave;:</td>
-			<td th:text="*{nazionalita}"></td>
-		</tr>
-   	</table>
-   	
-   	<div>
-   		<h4>Elenco Opere:</h4>
-   		<ul>
-			<li th:each="opera : ${opere}">
-			<a href="opera.html" 
-			   th:href="@{'/opera' + '/' + ${opera.id}}" 
-			   th:text="|${opera.titolo}|">Titolo</a>
-			</li>
-    	</ul>   		
-   	</div>
-   		
-   		<!-- 
-   		<form th:if="${artista}" th:object="${artista}">
-   		<table>
+
+	<h4>Dettagli Artista</h4>
+ 	
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html">Informazioni</a>
+	   	</nav>
+	   	
+	   	<table th:if="${artista}" th:object="${artista}">
+			<tr>
+				<td th:text="|*{nome} "></td>
+				<td th:text="*{cognome}"></td>		
+			</tr>
 			<tr>
 				<td>Nome:</td>
 				<td th:text="*{nome}"></td>
@@ -49,38 +30,20 @@
 				<td th:text="*{cognome}"></td>
 			</tr>
 			<tr>
-				<td>Data di nascita:</td>
-				<td th:text="*{dataN}"></td>
-			</tr>			
-			<tr>
-				<td>Luogo di nascita:</td>
-				<td th:text="*{luogN}"></td>
-			</tr>
-			<tr>
-				<td>Data di morte:</td>
-				<td th:text="*{dataM}"></td>
-			</tr>			
-			<tr>
-				<td>Luogo di morte:</td>
-				<td th:text="*{luogM}"></td>
-			</tr>
-			<tr>
-				<td>Nazionalita:</td>
+				<td>Nazionalit&agrave;:</td>
 				<td th:text="*{nazionalita}"></td>
 			</tr>
-		</table>
-		</form>
-		-->
-		<div>
-			<ul>
-				<li th:each="opera : ${opere}">
-				<a href="opera.html" 
-				   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				   th:text="|${opera.titolo}|">Nome cognome</a>
-				</li>
-    		</ul>
-   		</div>
-	</div>
+			<tr>
+				<td>Elenco Opere:</td>
+			</tr>
+			<tr name="opere" th:each="opera : ${artista.opere}">
+				<td>
+					<a href="opera.html" 
+				   	   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				       th:text="|${opera.titolo}|">Titolo</a>
+				</td>
+			</tr>
+    </table>   		
 	</div>
 	<footer><a href="/">Home</a></footer>
 </body>

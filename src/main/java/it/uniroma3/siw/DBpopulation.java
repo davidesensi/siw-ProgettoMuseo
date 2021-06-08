@@ -56,18 +56,44 @@ public class DBpopulation implements ApplicationRunner{
 		DaVinci.setLuogoM("Amboise");
 		DaVinci.setNazionalita("Italiana");
 		
+		Artista Pelizza = new Artista();
+		Pelizza.setNome("Giuseppe");
+		Pelizza.setCognome("Pelizza");
+		//Pelizza.setDataN("1868/07/28");
+		Pelizza.setLuogoN("Volpedo");
+		//Pelizza.setDataM(1907-06-14);
+		Pelizza.setLuogoM("Volpedo");
+		Pelizza.setNazionalita("Italiana");
+		
 		
 		Opera o = new Opera();
 		o.setTitolo("La Gioconda");
 		o.setAnno(1492);
 		o.setArtista(DaVinci);
 		
-				
-		Collezione c = new Collezione();
-		c.setNome("Leonardo Il Genio");
-		c.addOpera(o);
+		Opera o1 = new Opera();
+		o1.setTitolo("Il quarto stato");
+		o1.setAnno(1901);
+		o1.setArtista(Pelizza);
 		
-		o.setCollezione(c);
+		Opera o2 = new Opera();
+		o2.setTitolo("Ultima Cena");
+		o2.setAnno(1498);
+		o2.setArtista(DaVinci);
+		
+				
+		Collezione cc = new Collezione();
+		cc.setNome("Leonardo Il Genio");
+		cc.addOpera(o);
+		cc.addOpera(o2);
+		
+		Collezione cc1 = new Collezione();
+		cc1.setNome("Il Novecento");
+		cc1.addOpera(o1);
+		
+		o.setCollezione(cc);
+		o1.setCollezione(cc1);
+		o2.setCollezione(cc);
 		
 		User davide = new User();
 		davide.setNome("Davide");
@@ -101,8 +127,12 @@ public class DBpopulation implements ApplicationRunner{
 		
 		
 		artistaRepository.save(DaVinci);
+		artistaRepository.save(Pelizza);
 		operaRepository.save(o);
-		collezioneRepository.save(c);
+		operaRepository.save(o1);
+		operaRepository.save(o2);
+		collezioneRepository.save(cc);
+		collezioneRepository.save(cc1);
 		userRepository.save(davide);
 		userRepository.save(stefano);
 		userRepository.save(admin);

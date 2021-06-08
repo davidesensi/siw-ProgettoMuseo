@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Opera</title></head>
+<head>
+	<link th:href="@{/css/index.css}" rel="stylesheet">
+	<title>Opera</title></head>
 <body>
-	<div>
-		<h4>Dettagli Opera</h4>
-	<div th:object=${opera}>
-		<span th:text="*{titolo}">La Primavera</span>
-		<span th:text="*{anno}">1500</span>
-		<span th:text="*{descrizione}">Desc</span>
-		
-	</div>
-	<div>
-		<a href="artista.html" 
-			   th:href="@{'/{opera.artista}' + '/' + ${opera.artista.id}}" 
-			   th:text="|${opera.artista.nome} ${opera.artista.cognome}| ">Nome Cognome</a>
-	</div>
+	<h4>Dettagli Opera</h4>
+	
+	<div> 	
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html" >Informazioni</a>
+	   	</nav>
+		<table th:object=${opera}>
+			<tr>
+				<td>Titolo:</td>
+				<td th:text="*{titolo}">La Primavera</td>
+			</tr>
+			<tr>
+				<td>Anno:</td>
+				<td th:text="*{anno}">1500</td>
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td th:text="*{descrizione}">Desc</td>
+			</tr>
+			<tr>
+				<td>Autore:</td>
+				<td th:text="|${opera.artista.nome} ${opera.artista.cognome}|"></td>
+				<td><a href="artista.html" 
+				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}" 
+				       th:text="|${opera.artista.nome} ${opera.artista.cognome}|">Maggiori Informazioni</a></td>
+			</tr>
+			<tr>
+				<td>Collezione:</td>
+				<td th:text="${opera.collezione.nome}"></td>
+				<td><a href="artista.html">Maggiori infromazioni</a></td>
+			</tr>				
+		</table>
 	</div>
 	<footer><a href="/">Home</a></footer>
 </body>

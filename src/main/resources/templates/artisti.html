@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8" />
-	<link href="artista.css" rel="stylesheet">
 	<title>Artisti</title>
-	<link th:href="@{/css/artista.css}" rel="stylesheet">
+	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
-Â  <h4>Elenco artisti:</h4>
-    <ul>
-		<li th:each="artista : ${artisti}">
-		<a href="artista.html" 
-		   th:href="@{'/artista' + '/' + ${artista.id}}" 
-		   th:text="|${artista.nome} ${artista.cognome}|">Nome cognome</a>
-		</li>
-    </ul>
-    
-Â  Â  <footer><a href="/">Home</a></footer>
+	<h4>Elenco Artisti</h4>
+ 	<div>
+		<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html">Informazioni</a>
+	   	</nav>
+	    <table>
+			<tr th:each="artista : ${artisti}">
+				<td>
+					<a href="artista.html" 
+				   	   th:href="@{'/artista' + '/' + ${artista.id}}" 
+				       th:text="|${artista.nome} ${artista.cognome}|">Nome cognome</a>
+				</td>
+			</tr>
+	    </table>
+    </div>
+    <footer><a href="/">Home</a></footer>
 </body>
 </html>
