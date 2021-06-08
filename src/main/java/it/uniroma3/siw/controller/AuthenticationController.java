@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.validator.CredentialsValidator;
 import it.uniroma3.siw.validator.UserValidator;
@@ -21,6 +22,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsService credentialsService;
+	
+	@Autowired
+	private ArtistaService artistaService;
 	
 	@Autowired
 	private UserValidator userValidator;
@@ -52,6 +56,18 @@ public class AuthenticationController {
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/home";
+        }
+        return "home";
+    }
+    
+    @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
+    public String getArtistiAdmin(Model model) {
+        
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+    	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		model.addAttribute("artisti", this.artistaService.findAll());
+    		return "admin/artisti";
         }
         return "home";
     }

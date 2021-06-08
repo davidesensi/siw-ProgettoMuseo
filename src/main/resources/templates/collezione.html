@@ -25,7 +25,7 @@
 			</tr>
 			<tr>
 				<td>Elenco Opere:</td>
-			<tr th:each="opera : ${opere}">
+			<tr th:each="opera : ${collezione.opere}">
 				<td>
 					<a href="opera.html" 
 				   	   th:href="@{'/opera' + '/' + ${opera.id}}" 

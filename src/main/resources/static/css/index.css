@@ -1,12 +1,12 @@
 nav {
-	height: 75px;
+	height: 15%;
 	background: lightskyblue;
 }
 
 h4 {
-	height: 150px;
+	height: 20%px;
 	color: red;
-	margin: 50px;
+	margin: 8%;
 	text-align: center;
 	line-height: 30px;
 	font-size: 100px;
@@ -44,6 +44,8 @@ table {
 
 a {
 	margin: 20px;
+	margin-top:2%;
+	margin-bottom:2%;
 	color: black;
 }
 

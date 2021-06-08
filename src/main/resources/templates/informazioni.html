@@ -5,7 +5,6 @@
 	
 	 </head>
 <body>
-    <div th:each="${informazioni}">
     	<h4>INFORMAZIONI</h4>
  	
 	<nav> 	
@@ -14,14 +13,15 @@
    		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
    		<a href="templates/informazioni.html">Informazioni</a>
    	</nav>
+   	<div>
+   		<h3>Esame di Sistemi informatici sul Web</h3>
+   		<h3>Questa è la soluzione del sito del museo</h3>
+   		<h3>Il sito è stato creato e messo appunto dagli studenti:</h3>
+   		<h3>Sensi Davide - 508825 - Ing.Informatica</h3>
+   		<h3>Zappasodi Stefano - 508857 - Ing.Informatica</h3>
+   	</div>
    	
-   	<h5>Esame di Sistemi informatici sul Web</h5>
-   	<h3>Questa è la soluzione del sito del museo</h3>
-   	<h3>Il sito è stato creato e messo appunto dagli studenti:</h3>
-   	<h3>Sensi Davide - 50**** - Ing.Informatica</h3>
-   	<h3>Zappasodi Stefano - 508857 - Ing.Informatica</h3>
    	
-    </div>
     <footer><a href="/">Home</a></footer>
 </body>
 </html>

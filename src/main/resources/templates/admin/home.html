@@ -4,15 +4,25 @@
 <body>
     <div>
     	<h4>Menu</h4>
-		<div>
-			<a th:href="@{/artisti}">Elenco artisti</a>
-   		</div>
-   		<div>
-			<a th:href="@{/admin/artistaForm}">Inserisci dati artista</a>
-   		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
+    	<nav> 	
+			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	   	</nav>
+		<table>
+   			<tr>
+   				<td> Elenco Artisti:</td>
+   				<td> <a  th:action="@{/admin/artisti}" th:href="@{/artisti}">Elenco Artisti: </a></td>
+   			</tr>
+   			<tr>
+   				<td> <a th:href="@{/admin/artistaForm}">Aggiungi Artista </a></td>
+   			</tr>
+   			<tr>
+   				<td> <a th:action="@{/logout}" th:href="@{/logout}">Logout </a></td>
+   			</tr>
+   		</table>
+		
     </div>
     <footer><a href="/">Home</a></footer>
 </body>

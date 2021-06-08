@@ -30,13 +30,14 @@
 				<td>Autore:</td>
 				<td th:text="|${opera.artista.nome} ${opera.artista.cognome}|"></td>
 				<td><a href="artista.html" 
-				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}" 
-				       th:text="|${opera.artista.nome} ${opera.artista.cognome}|">Maggiori Informazioni</a></td>
+				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}"
+				       th:text="|${opera.artista.nome} ${opera.artista.cognome}|">Nome Cognome</a></td>
 			</tr>
 			<tr>
 				<td>Collezione:</td>
 				<td th:text="${opera.collezione.nome}"></td>
-				<td><a href="artista.html">Maggiori infromazioni</a></td>
+				<td><a  href="collezione.html"
+						th:href="@{'/opera.collezione' + '/' + ${opera.collezione.id}}">Maggiori informazioni</a></td>
 			</tr>				
 		</table>
 	</div>

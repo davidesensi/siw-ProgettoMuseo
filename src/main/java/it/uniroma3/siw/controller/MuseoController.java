@@ -79,6 +79,24 @@ public class MuseoController {
 	public String getOpera(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("opera", this.operaService.findById(id));
 		return "opera";
-	}	
+	}
+	
+	@RequestMapping(value="/opera.artista/{id}", method = RequestMethod.GET)
+	public String getArtistaFromOpera(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("artista", this.artistaService.findById(id));
+		return "artista";
+	}
+	
+	@RequestMapping(value="/opera.collezione/{id}", method = RequestMethod.GET)
+	public String getCollezioneFromOpera(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("collezione", this.collezioneService.findById(id));
+		return "collezione";
+	}
+	
+	@RequestMapping(value="/informazioni", method = RequestMethod.GET)
+	public String getInformazioni() {
+		return "informazioni.html";
+	}
+	
 	
 }
