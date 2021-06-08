@@ -55,9 +55,9 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "admin/home";
+            return "admin/index";
         }
-        return "home";
+        return "index";
     }
     
     @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
@@ -69,7 +69,7 @@ public class AuthenticationController {
     		model.addAttribute("artisti", this.artistaService.findAll());
     		return "admin/artisti";
         }
-        return "home";
+        return "index";
     }
     
     @RequestMapping(value = "/admin/artistaForm", method = RequestMethod.GET)
@@ -80,7 +80,7 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
     		return "admin/artistaForm";
         }
-        return "home";
+        return "index";
     }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
