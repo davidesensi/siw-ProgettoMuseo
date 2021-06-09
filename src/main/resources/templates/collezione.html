@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/base.html :: headerfiles">
 	<title>Collezione</title>
-	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
 	<nav class="InOut">
@@ -11,15 +10,8 @@
  			<a th:href="@{/logout}">Logout </a>
  	</nav>
 	<h4>Dettagli Collezione</h4>
+	<div th:replace="fragments/base.html :: navigator"></div>
  	<div>
-		<nav> 	
-			<a href="/">Home</a>	|
-			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
-	   	</nav>
-   	
 		<table th:object=${collezione}>
 			<tr>
 				<td>Nome:</td>

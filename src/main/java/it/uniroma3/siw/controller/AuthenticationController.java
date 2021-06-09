@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.controller.session.SessionData;
+import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.ArtistaService;
@@ -31,6 +33,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+	
+	@Autowired
+	SessionData sessionData;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -55,7 +60,7 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "admin/index";
+            return "index";
         }
         return "index";
     }
@@ -67,23 +72,25 @@ public class AuthenticationController {
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
     		model.addAttribute("artisti", this.artistaService.findAll());
-    		return "admin/artisti";
+    		return "admin/artistiAdmin";
         }
         return "index";
     }
     
     @RequestMapping(value = "/admin/artistaForm", method = RequestMethod.GET)
-    public String adminAggiungeArtista(Model model) {
+    public String adminAggiungeArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
         
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		this.artistaService.save(artista);
+    		model.addAttribute("artisti", this.artistaService.findAll());
     		return "admin/artistaForm";
         }
-        return "index";
+        return "artisti";
     }
 	
-    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+   @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") User user,
                  BindingResult userBindingResult,
                  @ModelAttribute("credentials") Credentials credentials,

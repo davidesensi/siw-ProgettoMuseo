@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-	<link href="css/index.css" rel="stylesheet">
+<head th:replace="fragments/base.html :: headerfiles">
 <title>Index</title>
 </head>
 <body>
-	<!-- Questo Ã¨ da visulazizzare se non si Ã¨ loggati -->
+	<!-- Questo è da visulazizzare se non si è loggati -->
 		<nav class="InOut">
 	 			<a th:href="@{/login}">Accedi </a>	|
 	 			<a th:href="@{/register}">Registrati </a>
 	 	</nav>
-	<!-- Questo Ã¨ da visulazizzare se si Ã¨ loggati -->
+	<!-- Questo è da visulazizzare se si è loggati -->
 	 	<nav class="InOut">
 	 			<!-- <a th:text="|${user.nome} ${user.cognome}|">Nome Cognome</a>	|-->
 	 			<a th:href="@{/logout}">Logout </a>
 	 	</nav>
  	<h4>Benvenuto nel Museo</h4>
- 	<div>
-		<nav> 	
-			<a href="/">Home</a>	|
-			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
-	   	</nav>
-   		
+ 	<div th:replace="fragments/base.html :: navigator">
+ 	</div>
+   	<div>
    		<table>
    			<tr>
-   				<td><h3>Questo Ã¨ il sito del Museo</h3></td>
+   				<td><h3>Questo è il sito del Museo</h3></td>
    			</tr>
    			<tr>
    				<td><h3>Che ci scriviamo qui ?!</h3></td>

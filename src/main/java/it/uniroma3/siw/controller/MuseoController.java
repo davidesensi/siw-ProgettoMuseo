@@ -14,6 +14,7 @@ import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.OperaService;
+import it.uniroma3.siw.validator.ArtistaValidator;
 //import it.uniroma3.siw.validator.ArtistaValidator;
 //import it.uniroma3.siw.validator.ArtistaValidator;
 
@@ -31,19 +32,24 @@ public class MuseoController {
 
 	@Autowired
 	private OperaService operaService;
+
 	
-	@RequestMapping(value="/artistaForm", method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+        return "index";
+    }
+	
+	/*@RequestMapping(value="/artistaForm", method = RequestMethod.GET)
 	public String newArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
-		//this.artistaValidator.validate(artista, bindingResult);
-		//if(!bindingResult.hasErrors()) {
+		this.artistaValidator.validate(artista, bindingResult);
+		if(!bindingResult.hasErrors()) {
 			this.artistaService.save(artista);
 			model.addAttribute("artisti",this.artistaService.findAll());
 			return "artistaForm.html";
-	}
-		/*}
-		else {
-			return "index.html";
-		}*/
+		}
+		return "artisti";
+	}*/
+		
 
 	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
 	public String getArtisti(Model model) {

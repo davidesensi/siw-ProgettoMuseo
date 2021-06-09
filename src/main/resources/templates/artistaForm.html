@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-	<link th:href="@{/css/index.css}" rel="stylesheet">
+<head th:replace="fragments/base.html :: headerfiles"> 
 </head>
 <body>
 	<nav class="InOut">
@@ -11,15 +10,8 @@
  	</nav>
 	<h4>Inserimento Artista</h4>
 	
+	<div th:replace="fragments/base.html :: navigator"></div>
 	<div> 			
-		<nav> 	
-			<a href="/">Home</a>	|
-			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-	   		<a href="informazioni.html">Informazioni</a>
-	   	</nav>
-	
 		<form th:action="@{/admin/artistaForm}" method="POST">
 			<table>
 				<tr>
