@@ -14,22 +14,22 @@ public class Artista {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 
-	//@Column(nullable=false)
+	@Column(nullable=false)
 	private String nome;
 
-	//@Column(nullable=false)
+	@Column(nullable=false)
 	private String cognome;
 
 	//@Column(nullable=false)
 	private LocalDate dataN;
 	
-	//@Column(nullable=false)
+	@Column(nullable=false)
 	private String luogoN;
 
 	private LocalDate dataM;
 	private String luogoM;
 
-	//@Column(nullable=false)
+	@Column(nullable=false)
 	private String nazionalita;
 
 	//Associazione OneToMany tra Artista e Opera, viene mappato per identicficare che  due riferiemnti 

@@ -38,9 +38,13 @@ public class ArtistaService {
 			return null;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
+	@Transactional
 	public boolean alreadyExists(Artista artista) {
-		return artista.getId().equals(artistaRepository.findById(artista.getId()));
+		List<Artista> artisti = this.artistaRepository.findByNomeOrCognome(artista.getNome(), artista.getCognome());
+		if (artisti.size() > 0)
+			return true;
+		else 
+			return false;
 	}
 
 	public void save(Artista artista) {

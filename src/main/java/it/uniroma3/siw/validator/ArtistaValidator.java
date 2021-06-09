@@ -18,28 +18,6 @@ public class ArtistaValidator implements Validator{
 	@Autowired
 	private ArtistaService artistaService;
 	
-	/*public boolean validate(HttpServletRequest request) {
-		String nome = request.getParameter("nome");
-	  	String cognome = request.getParameter("cognome");
-	  	Map<String,String> messaggiErrori = new HashMap<String,String>();
-	  	
-	  	
-	  	if(!nome.equals("") && !cognome.equals("")) {
-	  		return true;
-	  	}
-	  	else {
-	  		if(nome.equals("")) {
-	  			messaggiErrori.put("nome","Il nome è un campo obbligatorio");
-	  			request.setAttribute("nome", nome);
-	  		}
-	  		if(cognome.equals("")) {
-	  			messaggiErrori.put("cognome","Il cognome è un campo obbligatorio");
-	  			request.setAttribute("cognome", cognome);
-	  		}
-	  		request.setAttribute("errori", messaggiErrori);
-	  		return false;
-	  	}
-	}*/
 
 	@Override
 	public boolean supports(Class<?> clazz) {
@@ -50,6 +28,8 @@ public class ArtistaValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome","required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "luogoN","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nazionalita","required");
 		if(this.artistaService.alreadyExists((Artista)target)){
 			errors.reject("duplicato");
 		}

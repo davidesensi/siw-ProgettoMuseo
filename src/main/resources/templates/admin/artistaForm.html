@@ -14,11 +14,15 @@
 		            <td>Nome</td>
 		            <td><input type="text" placeholder="nome" required
 		                       th:field="${artista.nome}"/></td>
+					<td th:if="${#fields.hasErrors('artista.nome')}"
+		                th:errors="${artista.nome}" th:style="'color:red'"></td>
 		        </tr>
 		        <tr>
 		            <td>Cognome</td>
 		            <td><input type="text" placeholder="cognome" required
 		                       th:field="${artista.cognome}"/></td>
+					<td th:if="${#fields.hasErrors('artista.cognome')}"
+		                th:errors="${artista.cognome}" th:style="'color:red'"></td>
 		        </tr>
 		        <tr>
 		            <td>Data di nascita</td>
@@ -29,6 +33,8 @@
 		            <td>Luogo di nascita</td>
 		            <td><input type="text" placeholder="luogoN" required
 		                       th:field="${artista.luogoN}"/></td>
+					<td th:if="${#fields.hasErrors('artista.luogoN')}"
+		                th:errors="${artista.luogoN}" th:style="'color:red'"></td>
 		        </tr>
 		        <tr>
 		            <td>Data di morte</td>
@@ -44,6 +50,8 @@
 		            <td>Nazionalita</td>
 		            <td><input type="text" placeholder="nazionalita" required
 		                       th:field="${artista.nazionalita}"/></td>
+					<td th:if="${#fields.hasErrors('artista.nazionalita')}"
+		                th:errors="${artista.nazionalita}" th:style="'color:red'"></td>
 		        </tr>
 		        <tr>
 		            <td>

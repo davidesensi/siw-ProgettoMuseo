@@ -3,20 +3,13 @@ package it.uniroma3.siw.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-//import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.OperaService;
-import it.uniroma3.siw.validator.ArtistaValidator;
-//import it.uniroma3.siw.validator.ArtistaValidator;
-//import it.uniroma3.siw.validator.ArtistaValidator;
 
 @Controller
 public class MuseoController {
@@ -24,8 +17,6 @@ public class MuseoController {
 	@Autowired
 	private ArtistaService artistaService;
 	
-	//@Autowired
-	//private ArtistaValidator artistaValidator;
 
 	@Autowired
 	private CollezioneService collezioneService;
@@ -38,18 +29,7 @@ public class MuseoController {
     public String index(Model model) {
         return "index";
     }
-	
-	/*@RequestMapping(value="/artistaForm", method = RequestMethod.GET)
-	public String newArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
-		this.artistaValidator.validate(artista, bindingResult);
-		if(!bindingResult.hasErrors()) {
-			this.artistaService.save(artista);
-			model.addAttribute("artisti",this.artistaService.findAll());
-			return "artistaForm.html";
-		}
-		return "artisti";
-	}*/
-		
+			
 
 	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
 	public String getArtisti(Model model) {

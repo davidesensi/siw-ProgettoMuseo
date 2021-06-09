@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CredentialsService;
+import it.uniroma3.siw.validator.ArtistaValidator;
 import it.uniroma3.siw.validator.CredentialsValidator;
 import it.uniroma3.siw.validator.UserValidator;
 
@@ -36,6 +38,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	SessionData sessionData;
+	
+	@Autowired
+	private ArtistaValidator artistaValidator;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -78,16 +83,30 @@ public class AuthenticationController {
     }
     
     @RequestMapping(value = "/admin/artistaForm", method = RequestMethod.GET)
-    public String adminAggiungeArtista(@ModelAttribute("artista") Artista artista,Model model, BindingResult bindingResult) {
+    public String adminAggiungeArtista(Model model) {
         
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-    		this.artistaService.save(artista);
-    		model.addAttribute("artisti", this.artistaService.findAll());
+    		model.addAttribute("artista", new Artista());
+    		
     		return "admin/artistaForm";
         }
         return "artisti";
+    }
+    
+    @RequestMapping(value = { "/admin/artistaForm" }, method = RequestMethod.POST)
+    public String registerArtista(@Validated @ModelAttribute("artista") Artista artista,
+                 BindingResult bindingResult,Model model) throws Exception{
+
+        this.artistaValidator.validate(artista, bindingResult);
+
+        if(!bindingResult.hasErrors()) {
+            artistaService.save(artista);
+            model.addAttribute("artisti", this.artistaService.findAll());
+            return "artisti";
+        }
+        return "admin/artistaForm";
     }
 	
    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
