@@ -13,6 +13,16 @@
     <div th:replace="fragments/base.html :: navigator"></div>
     <div> 	
 		<h1>Congratulazioni ti sei registrato!</h1>
+		<table th:if="${user}" th:object="${curatore}">
+			<tr>
+				<td>Nome:</td>
+				<td th:text="*{nome}"></td>
+			</tr>			
+			<tr>
+				<td>Cognome:</td>
+				<td th:text="*{cognome}"></td>
+			</tr>
+		</table>
 	</div>
     <footer></footer>
 </body>

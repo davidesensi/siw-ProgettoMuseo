@@ -11,6 +11,7 @@
  	</nav>
 	<h4>Dettagli Collezione</h4>
 	<div th:replace="fragments/base.html :: navigator"></div>
+	<div><a th:href="@{/admin/aggiungiOpereACollezione}">Vuoi aggiungere Opere a questa collezione?</a></div>
  	<div>
 		<table th:object=${collezione}>
 			<tr>
@@ -19,7 +20,7 @@
 			</tr>
 			<tr>
 				<td>Descrizione:</td>
-				<td th:text="*{descrizione}">Descrzione</td>
+				<td th:text="*{descrizione}">Descrizione</td>
 			</tr>
 			<tr>
 				<td>Elenco Opere:</td>

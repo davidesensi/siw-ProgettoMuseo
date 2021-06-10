@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import it.uniroma3.siw.model.Curatore;
 import it.uniroma3.siw.repository.CuratoreRepository;
 
@@ -37,9 +36,13 @@ public class CuratoreService {
 			return null;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
+	@Transactional
 	public boolean alreadyExists(Curatore curatore) {
-		return curatore.getId().equals(curatoreRepository.findById(curatore.getId()));
+		List<Curatore> curatori = this.curatoreRepository.findByNomeOrCognome(curatore.getNome(), curatore.getCognome());
+		if (curatori.size() > 0)
+			return true;
+		else 
+			return false;
 	}
 
 	public void save(Curatore curatore) {

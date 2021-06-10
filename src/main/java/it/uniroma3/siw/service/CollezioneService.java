@@ -1,10 +1,10 @@
 package it.uniroma3.siw.service;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.repository.CollezioneRepository;
 
@@ -19,9 +19,6 @@ public class CollezioneService {
 		return collezioneRepository.save(collezione);
 	}
 	
-	/*public Optional<Collezione> findById(Long id) {
-		return collezioneRepository.findById(id);
-	}*/
 	
 	@Transactional
 	public Collezione findById(Long id) {
@@ -32,9 +29,13 @@ public class CollezioneService {
 			return null;
 	}
 
-	@SuppressWarnings("unlikely-arg-type")
+	@Transactional
 	public boolean alreadyExists(Collezione collezione) {
-		return collezione.getId().equals(collezioneRepository.findById(collezione.getId()));
+		List<Collezione> collezioni = this.collezioneRepository.findByNome(collezione.getNome());
+		if (collezioni.size() > 0)
+			return true;
+		else 
+			return false;
 	}
 
 	public void save(Collezione collezione) {

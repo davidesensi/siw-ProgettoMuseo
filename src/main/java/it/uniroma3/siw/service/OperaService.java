@@ -48,7 +48,7 @@ public class OperaService {
 		operaRepository.save(opera);
 	}
 
-	public Object findAll() {
+	public Iterable<Opera> findAll() {
 		return operaRepository.findAll();
 	}
 }

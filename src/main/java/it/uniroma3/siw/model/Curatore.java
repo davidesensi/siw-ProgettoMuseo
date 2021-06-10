@@ -22,14 +22,14 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private LocalDate dataN;
 
-	@Column(nullable = false)
+	//@Column(nullable = false)
 	private String luogoN;
 
 	//@Column(nullable = false)
-	//private String matricola;
+	private String matricola;
 
 	@Column(nullable = false)
 	private String email;
@@ -123,6 +123,14 @@ public class Curatore {
 
 	public void setCollezioni(List<Collezione> collezioni) {
 		this.collezioni = collezioni;
+	}
+
+	public String getMatricola() {
+		return matricola;
+	}
+
+	public void setMatricola(String matricola) {
+		this.matricola = matricola;
 	}	
 
 }

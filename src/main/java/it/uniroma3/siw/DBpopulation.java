@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Credentials;
+import it.uniroma3.siw.model.Curatore;
 import it.uniroma3.siw.model.Opera;
-import it.uniroma3.siw.model.User;
 import it.uniroma3.siw.repository.ArtistaRepository;
 import it.uniroma3.siw.repository.CollezioneRepository;
+import it.uniroma3.siw.repository.CuratoreRepository;
 import it.uniroma3.siw.repository.OperaRepository;
-import it.uniroma3.siw.repository.UserRepository;
 import it.uniroma3.siw.service.CredentialsService;
 
 
@@ -26,13 +26,13 @@ public class DBpopulation implements ApplicationRunner{
 	private ArtistaRepository artistaRepository;
 	
 	@Autowired
+	private CuratoreRepository curatoreRepository;
+	
+	@Autowired
 	private CollezioneRepository collezioneRepository;
 	
 	@Autowired
 	private OperaRepository operaRepository;
-	
-	@Autowired
-	private UserRepository userRepository;
 	
 	@Autowired
 	private CredentialsService credentialsService;
@@ -95,35 +95,41 @@ public class DBpopulation implements ApplicationRunner{
 		o1.setCollezione(cc1);
 		o2.setCollezione(cc);
 		
-		User davide = new User();
+		Curatore davide = new Curatore();
 		davide.setNome("Davide");
 		davide.setCognome("Sensi");
+		davide.setEmail("davide.sen@email.com");
+		davide.setTelefono("3387456975");
 		
 		Credentials c1 = new Credentials();
 		c1.setUsername("davide");
 		c1.setPassword("davide");
-		c1.setRole("DEFAULT");
-		c1.setUser(davide);
+		c1.setRole("ADMIN");
+		c1.setCuratore(davide);
 		
-		User stefano = new User();
-		davide.setNome("Stefano");
-		davide.setCognome("Zappasodi");
+		Curatore stefano = new Curatore();
+		stefano.setNome("Stefano");
+		stefano.setCognome("Zappasodi");
+		stefano.setEmail("stefano.zap@email.com");
+		stefano.setTelefono("3387425312");
 		
 		Credentials c2 = new Credentials();
 		c2.setUsername("stefano");
 		c2.setPassword("stefano");
-		c2.setRole("DEFAULT");
-		c2.setUser(stefano);
+		c2.setRole("ADMIN");
+		c2.setCuratore(stefano);
 		
-		User admin = new User();
-		davide.setNome("Admin");
-		davide.setCognome("Admin");
+		Curatore admin = new Curatore();
+		admin.setNome("Admin");
+		admin.setCognome("Admin");
+		admin.setEmail("admin.adm@email.com");
+		admin.setTelefono("3387453535");
 		
 		Credentials c3 = new Credentials();
 		c3.setUsername("admin");
 		c3.setPassword("admin");
 		c3.setRole("ADMIN");
-		c3.setUser(admin);
+		c3.setCuratore(admin);
 		
 		
 		artistaRepository.save(DaVinci);
@@ -133,9 +139,9 @@ public class DBpopulation implements ApplicationRunner{
 		operaRepository.save(o2);
 		collezioneRepository.save(cc);
 		collezioneRepository.save(cc1);
-		userRepository.save(davide);
-		userRepository.save(stefano);
-		userRepository.save(admin);
+		curatoreRepository.save(davide);
+		curatoreRepository.save(stefano);
+		curatoreRepository.save(admin);
 		credentialsService.saveCredentials(c1);
 		credentialsService.saveCredentials(c2);
 		credentialsService.saveCredentials(c3);

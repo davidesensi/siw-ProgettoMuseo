@@ -12,7 +12,7 @@
 	<!-- Questo è da visulazizzare se si è loggati -->
 	 	<nav class="InOut">
 	 			<!-- <a th:text="|${user.nome} ${user.cognome}|">Nome Cognome</a>	|-->
-	 			<a th:href="@{/logout}">Logout </a>
+	 			<a th:href="@{/logout}"  th:method="POST">Logout </a>
 	 	</nav>
  	<h4>Benvenuto nel Museo</h4>
  	<div th:replace="fragments/base.html :: navigator">

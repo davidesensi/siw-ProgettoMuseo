@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles"> 
+</head>
+<body>
+	<nav class="InOut">
+ 			<a th:href="@{/login}">Accedi </a>	|
+ 			<a th:href="@{/register}">Registrati </a>	|
+ 			<a th:href="@{/logout}">Logout </a>
+ 	</nav>
+	<h4>Inserimento Collezione</h4>
+	
+	<div th:replace="fragments/base.html :: navigator"></div>
+	<div> 			
+		<form th:action="@{/admin/aggiungiOpereACollezione}" method="POST">
+			<table>
+				<tr th:each="opera : ${opere}">
+				<td>
+					<a href="opera.html" 
+					   th:href="@{'/opera' + '/' + ${opera.id}}" 
+					   th:text="|${opera.titolo}|">Titolo</a>
+					<button type="submit">Aggiungi Opera</button>
+				</td>
+			</tr>
+	    	</table>
+		</form>
+	</div>
+    <footer></footer>
+</body>
+</html>

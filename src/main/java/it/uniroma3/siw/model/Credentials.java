@@ -27,9 +27,12 @@ public class Credentials {
 	@Column(nullable = false)
 	private String role;
 	
-	@OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
+	@OneToOne(cascade = {CascadeType.ALL})
 	private User user;
-
+	
+	@OneToOne(cascade= {CascadeType.MERGE, CascadeType.REFRESH})
+	private Curatore curatore;
+	
 	public Long getId() {
 		return id;
 	}
@@ -68,5 +71,10 @@ public class Credentials {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public void setCuratore(Curatore curatore) {
+		this.curatore = curatore;
+		
 	}
 }

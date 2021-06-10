@@ -19,7 +19,7 @@ public class CollezioneValidator {
 	}
 
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name","required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome","required");
 		if(this.collezioneService.alreadyExists((Collezione)target)){
 			errors.reject("duplicato");
 		}
