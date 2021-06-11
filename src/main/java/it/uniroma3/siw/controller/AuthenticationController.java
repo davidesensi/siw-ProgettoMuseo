@@ -1,5 +1,7 @@
 package it.uniroma3.siw.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -146,8 +148,6 @@ public class AuthenticationController {
 		return "admin/collezioneForm";
 	}
 	
-<<<<<<< Updated upstream
-	
 	@RequestMapping(value = "/admin/operaForm", method = RequestMethod.GET)
 	public String adminAggiungeOpera(Model model) {
 
@@ -174,15 +174,9 @@ public class AuthenticationController {
 		}
 		return "admin/operaForm";
 	}
-		
 	
-	
-	@RequestMapping(value = "/admin/aggiungiOperaACollezione", method = RequestMethod.GET)
-	public String adminAggiungeOperaACollezione(@ModelAttribute("collezione") Collezione collezione,Model model) {
-=======
 	@RequestMapping(value = "/collezione/{id}/admin/aggiungiOpereACollezione", method = RequestMethod.GET)
 	public String adminAggiungeOperaACollezione(@PathVariable("id") Long id,Model model) {
->>>>>>> Stashed changes
 
 		Collezione collezione = this.collezioneService.findById(id);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -195,15 +189,9 @@ public class AuthenticationController {
 		}
 		return "collezione/{id}";
 	}
-<<<<<<< Updated upstream
-	
-	@RequestMapping(value = { "/admin/aggiungiOperaACollezione" }, method = RequestMethod.POST)
-	public String registerOperaACollezione(@Validated @ModelAttribute("collezione") Collezione collezione,
-=======
 
 	@RequestMapping(value = { "/collezione/{id}/admin/aggiungiOpereACollezione" }, method = RequestMethod.POST)
 	public String registerOperaACollezione( @PathVariable("id") Long id,
->>>>>>> Stashed changes
 			@ModelAttribute("opera") Opera opera,Model model) throws Exception{
 		
 		Collezione collezione = this.collezioneService.findById(id);

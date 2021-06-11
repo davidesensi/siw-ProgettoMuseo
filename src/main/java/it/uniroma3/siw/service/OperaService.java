@@ -53,10 +53,7 @@ public class OperaService {
 		operaRepository.save(opera);
 	}
 
-<<<<<<< Updated upstream
-	public Object findAll() {
-		return operaRepository.findAll();
-=======
+
 	@Transactional
 	public List<Opera> findAll() {
 		Iterable<Opera> opere = this.operaRepository.findAll();
@@ -65,6 +62,5 @@ public class OperaService {
 			daRitornare.add(opera);
 		}
 		return daRitornare;
->>>>>>> Stashed changes
 	}
 }
