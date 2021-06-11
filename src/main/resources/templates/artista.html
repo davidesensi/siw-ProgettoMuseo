@@ -13,7 +13,7 @@
  	
 		<div th:replace="fragments/base.html :: navigator"></div>
 	   	<div>
-	   	<table th:if="${artista}" th:object="${artista}">
+	   	<table th:object="${artista}">
 			<tr>
 				<td th:text="|*{nome} "></td>
 				<td th:text="*{cognome}"></td>		

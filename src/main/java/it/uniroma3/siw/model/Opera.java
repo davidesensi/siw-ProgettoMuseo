@@ -12,7 +12,7 @@ public class Opera {
 	@Column(nullable=false)
 	private String titolo;
 
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private int anno;
 
 	//@Column(nullable=false)
@@ -31,7 +31,6 @@ public class Opera {
 
 	//Costruttore no args
 	public Opera() {
-
 	}
 
 	public Opera(String titolo, int anno, String descrizione, Collezione collezione, Artista artista) {

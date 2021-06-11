@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles"> 
+</head>
+<body>
+	<nav class="InOut">
+ 			<a th:href="@{/login}">Accedi </a>	|
+ 			<a th:href="@{/register}">Registrati </a>	|
+ 			<a th:href="@{/logout}">Logout </a>
+ 	</nav>
+	<h4>Inserimento Opera</h4>
+	
+	<div th:replace="fragments/base.html :: navigator"></div>
+	<div> 			
+		<form th:action="@{/admin/operaForm}" method="POST">
+			<table>
+				<tr>
+		            <td>Titolo</td>
+		            <td><input type="text" placeholder="titolo" required
+		                       th:field="${opera.titolo}"/></td>
+		        </tr>
+		        <tr>
+		            <td>Anno</td>
+		            <td><input type="number" placeholder="anno"
+		                       th:field="${opera.anno}"/></td>
+		        </tr>
+		        <tr>
+		            <td>Descrizione</td>
+		            <td><input type="text" placeholder="descrizione"
+		                       th:field="${opera.descrizione}"/></td>
+		        </tr>
+		        <tr>
+		            <td>
+		                <button type="submit">Inserisci Opera</button>
+		            </td>
+		        </tr>
+	    	</table>
+		</form>
+	</div>
+    <footer></footer>
+</body>
+</html>

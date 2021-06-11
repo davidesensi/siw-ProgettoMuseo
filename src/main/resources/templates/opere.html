@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles">
-
 	<title>Opere</title>
 </head>
 <body>
@@ -10,8 +9,7 @@
  			<a th:href="@{/register}">Registrati </a>	|
  			<a th:href="@{/logout}">Logout </a>
  	</nav>
-	<h4>Elenco Opere:</h4>
-	
+	<h4>Elenco Opere:</h4>	
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div>
 		<table>
@@ -23,6 +21,9 @@
 				</td>
 			</tr>
 	    </table>
+	</div>
+	<div>
+		<a th:href="@{admin/operaForm}" th:action="@{admin/operaForm}" >Inserisci una nuova Opera</a>
 	</div>
     <footer></footer>
 </body>

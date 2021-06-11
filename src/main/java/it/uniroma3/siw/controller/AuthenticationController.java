@@ -1,7 +1,5 @@
 package it.uniroma3.siw.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.controller.session.SessionData;
+
 import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Credentials;
@@ -26,6 +24,7 @@ import it.uniroma3.siw.service.OperaService;
 import it.uniroma3.siw.validator.ArtistaValidator;
 import it.uniroma3.siw.validator.CollezioneValidator;
 import it.uniroma3.siw.validator.CredentialsValidator;
+import it.uniroma3.siw.validator.OperaValidator;
 
 @Controller
 public class AuthenticationController {
@@ -40,10 +39,10 @@ public class AuthenticationController {
 	private CredentialsValidator credentialsValidator;
 
 	@Autowired
-	SessionData sessionData;
-
-	@Autowired
 	private ArtistaValidator artistaValidator;
+	
+	@Autowired
+	private OperaValidator operaValidator;
 
 	@Autowired
 	private CollezioneValidator collezioneValidator;
@@ -112,7 +111,7 @@ public class AuthenticationController {
 
 		if(!bindingResult.hasErrors()) {
 			artistaService.save(artista);
-			model.addAttribute("artista", this.collezioneService.findAll());
+			model.addAttribute("artisti", this.artistaService.findAll());
 			return "artisti";
 		}
 		return "admin/artistaForm";
@@ -146,6 +145,36 @@ public class AuthenticationController {
 		return "admin/collezioneForm";
 	}
 	
+	
+	@RequestMapping(value = "/admin/operaForm", method = RequestMethod.GET)
+	public String adminAggiungeOpera(Model model) {
+
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("opera", new Opera());
+
+			return "admin/operaForm";
+		}
+		return "opere";
+	}
+
+	@RequestMapping(value = { "/admin/operaForm" }, method = RequestMethod.POST)
+	public String registerOpera(@Validated @ModelAttribute("opera") Opera opera,
+			BindingResult bindingResult,Model model) throws Exception{
+
+		this.operaValidator.validate(opera, bindingResult);
+
+		if(!bindingResult.hasErrors()) {
+			operaService.save(opera);
+			model.addAttribute("opere", this.operaService.findAll());
+			return "opere";
+		}
+		return "admin/operaForm";
+	}
+		
+	
+	
 	@RequestMapping(value = "/admin/aggiungiOperaACollezione", method = RequestMethod.GET)
 	public String adminAggiungeOperaACollezione(@ModelAttribute("collezione") Collezione collezione,Model model) {
 
@@ -159,7 +188,7 @@ public class AuthenticationController {
 		}
 		return "collezioni";
 	}
-
+	
 	@RequestMapping(value = { "/admin/aggiungiOperaACollezione" }, method = RequestMethod.POST)
 	public String registerOperaACollezione(@Validated @ModelAttribute("collezione") Collezione collezione,
 			@ModelAttribute("opera") Opera opera,Model model) throws Exception{

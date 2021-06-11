@@ -1,7 +1,6 @@
 package it.uniroma3.siw.service;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,9 @@ public class OperaService {
 		return operaRepository.save(opera);
 	}
 
-	public List<Opera> search(String titolo){
+	/*public List<Opera> search(String titolo){
 		return operaRepository.findByTitolo(titolo);
-	}
+	}*/
 
 	/*public Optional<Opera> findById(Long id) {
 		return operaRepository.findById(id);
@@ -38,17 +37,22 @@ public class OperaService {
 		else 
 			return null;
 	}	
+	
 
-	@SuppressWarnings("unlikely-arg-type")
+	@Transactional
 	public boolean alreadyExists(Opera opera) {
-		return opera.getId().equals(operaRepository.findById(opera.getId()));
+		List<Opera> opere = this.operaRepository.findByTitolo(opera.getTitolo());
+		if (opere.size() > 0)
+			return true;
+		else 
+			return false;
 	}
 
 	public void save(Opera opera) {
 		operaRepository.save(opera);
 	}
 
-	public Iterable<Opera> findAll() {
+	public Object findAll() {
 		return operaRepository.findAll();
 	}
 }

@@ -23,8 +23,7 @@ public class OperaValidator implements Validator{
 
 	public void validate(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo","required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "anno","required");
-
+		
 		if(this.operaService.alreadyExists((Opera)target)){
 			errors.reject("duplicato");
 		}
