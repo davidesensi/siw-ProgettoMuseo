@@ -1,9 +1,13 @@
 package it.uniroma3.siw.model;
 
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.*;
+
+import org.hibernate.mapping.Map;
 
 @Entity
 public class Collezione {
@@ -27,8 +31,8 @@ public class Collezione {
 
 	//Associazione OneToMany tra Collezione e Opera, viene mappato per identicficare che  due riferiemnti 
 	//in Collezione e Opera si riferiscono alla stessa cosa
-	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.ALL})
-	private List <Opera> opere;
+	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.ALL})
+	private List<Opera> opere;
 
 	//Costruttore no args
 	public Collezione() {
@@ -82,7 +86,7 @@ public class Collezione {
 	}
 
 	public List<Opera> getOpere() {
-		return opere;
+		return this.opere;
 	}
 
 	public void setOpere(List<Opera> opere) {

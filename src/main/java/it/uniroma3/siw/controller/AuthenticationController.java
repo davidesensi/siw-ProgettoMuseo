@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -145,6 +146,7 @@ public class AuthenticationController {
 		return "admin/collezioneForm";
 	}
 	
+<<<<<<< Updated upstream
 	
 	@RequestMapping(value = "/admin/operaForm", method = RequestMethod.GET)
 	public String adminAggiungeOpera(Model model) {
@@ -177,32 +179,44 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/admin/aggiungiOperaACollezione", method = RequestMethod.GET)
 	public String adminAggiungeOperaACollezione(@ModelAttribute("collezione") Collezione collezione,Model model) {
+=======
+	@RequestMapping(value = "/collezione/{id}/admin/aggiungiOpereACollezione", method = RequestMethod.GET)
+	public String adminAggiungeOperaACollezione(@PathVariable("id") Long id,Model model) {
+>>>>>>> Stashed changes
 
+		Collezione collezione = this.collezioneService.findById(id);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezione", collezione);
 			model.addAttribute("opere", this.operaService.findAll());
 
-			return "admin/aggiungiOperaACollezione";
+			return "admin/aggiungiOpereACollezione";
 		}
-		return "collezioni";
+		return "collezione/{id}";
 	}
+<<<<<<< Updated upstream
 	
 	@RequestMapping(value = { "/admin/aggiungiOperaACollezione" }, method = RequestMethod.POST)
 	public String registerOperaACollezione(@Validated @ModelAttribute("collezione") Collezione collezione,
+=======
+
+	@RequestMapping(value = { "/collezione/{id}/admin/aggiungiOpereACollezione" }, method = RequestMethod.POST)
+	public String registerOperaACollezione( @PathVariable("id") Long id,
+>>>>>>> Stashed changes
 			@ModelAttribute("opera") Opera opera,Model model) throws Exception{
 		
+		Collezione collezione = this.collezioneService.findById(id);
 		if(!collezione.getOpere().contains(opera)) {
-			Object opere =  this.operaService.findAll();
-			collezione.addOpera(opera);	
-			collezioneService.save(collezione);
+			List<Opera> opere =  this.operaService.findAll();
+			opera.setCollezione(collezione);
+			opere.remove(opera);
+			operaService.save(opera);
 			model.addAttribute("collezione", collezione);
 			model.addAttribute("opere", opere);
+			return "collezione/{id}";
 		}
-		collezione.addOpera(opera);
-		collezioneService.save(collezione);
-		return "/admin/aggiungiOperaACollezione";
+		return "admin/aggiungiOpereACollezione";
 		
 	}
 

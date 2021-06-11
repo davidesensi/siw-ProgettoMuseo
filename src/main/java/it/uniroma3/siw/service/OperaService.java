@@ -1,5 +1,6 @@
 package it.uniroma3.siw.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,7 +53,18 @@ public class OperaService {
 		operaRepository.save(opera);
 	}
 
+<<<<<<< Updated upstream
 	public Object findAll() {
 		return operaRepository.findAll();
+=======
+	@Transactional
+	public List<Opera> findAll() {
+		Iterable<Opera> opere = this.operaRepository.findAll();
+		List<Opera> daRitornare = new ArrayList<>();
+		for(Opera opera : opere) {
+			daRitornare.add(opera);
+		}
+		return daRitornare;
+>>>>>>> Stashed changes
 	}
 }

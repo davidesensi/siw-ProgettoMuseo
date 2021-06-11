@@ -12,17 +12,16 @@
 	
 	<div th:replace="fragments/base.html :: navigator"></div>
 	<div> 			
-		<form th:action="@{/admin/aggiungiOpereACollezione}" method="POST">
+		<form th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}" method="POST">
 			<table>
 				<tr th:each="opera : ${opere}">
 				<td>
-					<a href="opera.html" 
-					   th:href="@{'/opera' + '/' + ${opera.id}}" 
-					   th:text="|${opera.titolo}|">Titolo</a>
-					<button type="submit">Aggiungi Opera</button>
+					<a th:text="${opera.titolo}">Titolo</a>
+					<input type="checkbox" onclick="collezione.id.addOpera(opera)">Aggiungi Opera
 				</td>
 			</tr>
 	    	</table>
+	    	<button type="submit" name="conferma" th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}">Conferma</button>
 		</form>
 	</div>
     <footer></footer>
