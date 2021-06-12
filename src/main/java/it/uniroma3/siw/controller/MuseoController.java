@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.OperaService;
 
 @Controller
+@SessionAttributes("accountCorrente")
 public class MuseoController {
 	
 	@Autowired
@@ -23,13 +25,7 @@ public class MuseoController {
 
 	@Autowired
 	private OperaService operaService;
-
-	
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-    public String index(Model model) {
-        return "index";
-    }
-			
+				
 
 	@RequestMapping(value="/artisti" , method= RequestMethod.GET)
 	public String getArtisti(Model model) {

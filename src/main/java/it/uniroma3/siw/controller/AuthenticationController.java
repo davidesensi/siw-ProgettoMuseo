@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.model.Collezione;
@@ -30,6 +30,7 @@ import it.uniroma3.siw.validator.CredentialsValidator;
 import it.uniroma3.siw.validator.OperaValidator;
 
 @Controller
+@SessionAttributes("accountCorrente")
 public class AuthenticationController {
 
 	@Autowired
@@ -60,6 +61,14 @@ public class AuthenticationController {
 	private Object userValidator;*/
 
 
+	@RequestMapping(value = { "/", "/index" , "/index/**"}, method = RequestMethod.GET)
+    public String index(Model model) {
+			model.addAttribute("accountCorrente", model.getAttribute("accountCorrente"));
+			return "index";
+		
+    }
+	
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
 		return "loginForm";
@@ -75,6 +84,7 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			return "index";
 		}
@@ -86,6 +96,7 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("artisti", this.artistaService.findAll());
 			return "admin/artistiAdmin";
@@ -98,6 +109,7 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("artista", new Artista());
 
@@ -126,6 +138,7 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezione", new Collezione());
 
@@ -153,6 +166,7 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("opera", new Opera());
 
@@ -181,6 +195,7 @@ public class AuthenticationController {
 		Collezione collezione = this.collezioneService.findById(id);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezione", collezione);
 			model.addAttribute("opere", this.operaService.findAll());
