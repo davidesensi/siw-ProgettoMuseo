@@ -3,10 +3,11 @@
 <head th:replace="fragments/base.html :: headerfiles"> 
 </head>
 <body>
+	<div th:replace="fragments/base.html :: login"></div>
 	<h4>Inserimento Artista</h4>
 	
 	<div th:replace="fragments/base.html :: navigator"></div>
-	<div>	
+	<div class="Corpo">	
 	
 		<form th:action="@{/admin/artistaForm}" method="POST">
 			<table>

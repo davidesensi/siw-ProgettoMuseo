@@ -3,15 +3,11 @@
 <head th:replace="fragments/base.html :: headerfiles">
 	<title>Opera</title></head>
 <body>
-	<nav class="InOut">
- 			<a th:href="@{/login}">Accedi </a>	|
- 			<a th:href="@{/register}">Registrati </a>	|
- 			<a th:href="@{/logout}">Logout </a>
- 	</nav>
+	<div th:replace="fragments/base.html :: login"></div>
 	<h4>Dettagli Opera</h4>
 	
 	<div th:replace="fragments/base.html :: navigator"></div>
-	<div>
+	<div class="Corpo">
 		<table th:object=${opera}>
 			<tr>
 				<td>Titolo:</td>

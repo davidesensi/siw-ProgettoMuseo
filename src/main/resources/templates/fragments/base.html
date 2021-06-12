@@ -5,14 +5,18 @@
 	<link th:href="@{/css/index.css}" rel="stylesheet">
 </head>
 <body>
-	<div th:fragment = "navigator">
-		<nav> 	
-			<a href="/">Home</a>	|
-			<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
-	   		<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
-	   		<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
-	   		<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
-	   	</nav>
-   	</div>
+	<div class="InOut" th:fragment = "login">
+		<a th:href="@{/login}">Accedi </a>	|
+ 		<a th:href="@{/register}">Registrati </a>	|
+ 		<a th:href="@{/logout}">Logout </a>
+	</div>
+	
+	<div class="Navigator" th:fragment = "navigator">
+		<a href="/">Home</a>	|
+		<a href="artisti.html" th:action="@{/artisti}" th:href="@{/artisti}">Artisti</a>  |  
+	   	<a href="collezioni.html" th:action="@{/collezioni}" th:href="@{/collezioni}">Collezioni</a>  | 
+	   	<a href="opere.html" th:action="@{/opere}" th:href="@{/opere}">Opere</a>  |  
+	   	<a href="informazioni.html" th:action="@{/informazioni}" th:href="@{/informazioni}">Informazioni</a>
+	</div>
 </body>
 </html>

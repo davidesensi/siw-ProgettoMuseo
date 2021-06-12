@@ -7,7 +7,8 @@
 	<link th:href="@{/css/artista.css}" rel="stylesheet">
 </head>
 <body>
-  <h4>Elenco artisti:</h4>
+	<div th:replace="fragments/base.html :: login"></div>
+	<h4>Elenco artisti:</h4>
     <ul>
 		<li th:each="artista : ${artisti}">
 		<a href="artista.html" 
