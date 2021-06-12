@@ -6,9 +6,13 @@
 </head>
 <body>
 	<div class="InOut" th:fragment = "login">
-		<a th:href="@{/login}">Accedi </a>	|
- 		<a th:href="@{/register}">Registrati </a>	|
- 		<a th:href="@{/logout}">Logout </a>
+		<span th:if="${accountCorrente == null}">
+			<a th:href="@{/login}">Accedi </a>
+	 		<a th:href="@{/register}">Registrati </a>
+		</span>
+		<span th:if="${accountCorrente != null}">
+		 	<a th:href="@{/logout}">Logout </a>
+		</span>
 	</div>
 	
 	<div class="Navigator" th:fragment = "navigator">
