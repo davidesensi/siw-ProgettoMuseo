@@ -7,7 +7,7 @@ public class Opera {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long Id;
+	private Long id;
 
 	@Column(nullable=false)
 	private String titolo;
@@ -21,7 +21,7 @@ public class Opera {
 
 	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
-	@ManyToOne(cascade= {CascadeType.ALL})
+	@ManyToOne(cascade= {CascadeType.ALL })
 	private Collezione collezione;
 
 	//Associazione ManyToOne tra Opera e Artista, viene mappato per identicficare che  due riferiemnti 
@@ -46,11 +46,11 @@ public class Opera {
 	/****************************************************************************************************/
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getTitolo() {

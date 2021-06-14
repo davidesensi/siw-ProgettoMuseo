@@ -37,7 +37,8 @@ public class CollezioneService {
 		else 
 			return false;
 	}
-
+	
+	@Transactional
 	public void save(Collezione collezione) {
 		collezioneRepository.save(collezione);
 	}
@@ -45,4 +46,6 @@ public class CollezioneService {
 	public Object findAll() {
 		return collezioneRepository.findAll();
 	}
+
+
 }

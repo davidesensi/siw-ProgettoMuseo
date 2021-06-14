@@ -2,12 +2,9 @@ package it.uniroma3.siw.model;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.*;
-
-import org.hibernate.mapping.Map;
 
 @Entity
 public class Collezione {
@@ -92,8 +89,6 @@ public class Collezione {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
-
-
 
 
 }

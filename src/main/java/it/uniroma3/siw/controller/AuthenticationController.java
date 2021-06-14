@@ -1,5 +1,6 @@
 package it.uniroma3.siw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import it.uniroma3.siw.model.Artista;
@@ -20,6 +23,7 @@ import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.repository.OperaRepository;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.CredentialsService;
@@ -47,6 +51,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private OperaValidator operaValidator;
+	
+	@Autowired
+	private OperaRepository operaRepository;
 
 	@Autowired
 	private CollezioneValidator collezioneValidator;
@@ -195,10 +202,11 @@ public class AuthenticationController {
 		Collezione collezione = this.collezioneService.findById(id);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		List<Opera> opere = this.operaService.findAll();
 		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezione", collezione);
-			model.addAttribute("opere", this.operaService.findAll());
+			model.addAttribute("opere", opere);
 
 			return "admin/aggiungiOpereACollezione";
 		}
@@ -206,19 +214,20 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(value = { "/collezione/{id}/admin/aggiungiOpereACollezione" }, method = RequestMethod.POST)
-	public String registerOperaACollezione( @PathVariable("id") Long id,
-			@ModelAttribute("opera") Opera opera,Model model) throws Exception{
-		
-		Collezione collezione = this.collezioneService.findById(id);
-		if(!collezione.getOpere().contains(opera)) {
-			List<Opera> opere =  this.operaService.findAll();
-			opera.setCollezione(collezione);
-			opere.remove(opera);
-			operaService.save(opera);
-			model.addAttribute("collezione", collezione);
-			model.addAttribute("opere", opere);
-			return "collezione/{id}";
-		}
+	public String registerOperaACollezione(@PathVariable("id") Long idCollezione,
+				@RequestParam("opera_id") Long idOpera ,Model model) throws Exception{
+				Collezione collezione = this.collezioneService.findById(idCollezione);
+				Opera opera = operaService.findById(idOpera);
+				if(!collezione.getOpere().contains(opera)) {
+					collezione.addOpera(opera);
+					operaService.setCollezione(collezione, opera.getId());
+					collezioneService.save(collezione);
+					model.addAttribute("collezione", collezione);
+					model.addAttribute("opere", collezione.getOpere());
+					return "collezioni";
+				
+			}
+			
 		return "admin/aggiungiOpereACollezione";
 		
 	}

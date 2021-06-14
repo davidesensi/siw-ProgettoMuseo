@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.repository.OperaRepository;
 
@@ -22,9 +23,9 @@ public class OperaService {
 		return operaRepository.save(opera);
 	}
 
-	/*public List<Opera> search(String titolo){
+	public List<Opera> search(String titolo){
 		return operaRepository.findByTitolo(titolo);
-	}*/
+	}
 
 	/*public Optional<Opera> findById(Long id) {
 		return operaRepository.findById(id);
@@ -62,5 +63,20 @@ public class OperaService {
 			daRitornare.add(opera);
 		}
 		return daRitornare;
+	}
+
+	@Transactional
+	public List<Opera> selectOpere(List<Long> idOpere) {
+		List<Opera> daRit = new ArrayList<>();
+		for(Long id : idOpere) {
+			daRit.add(this.operaRepository.findById(id).get());
+		}
+		return daRit;
+	}
+
+	@Transactional
+	public void setCollezione(Collezione collezione, Long id) {
+		this.operaRepository.saveOrUpdate(collezione, id);
+		
 	}
 }

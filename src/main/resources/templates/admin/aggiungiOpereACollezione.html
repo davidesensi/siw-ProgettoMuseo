@@ -9,16 +9,20 @@
 	<div th:replace="fragments/base.html :: navigator"></div>
 	<div class="Corpo"> 			
 		<form th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}" method="POST">
-			<table>
-				<tr th:each="opera : ${opere}">
-				<td>
-					<a th:text="${opera.titolo}">Titolo</a>
-					<input type="checkbox" onclick="collezione.id.addOpera(opera)">Aggiungi Opera
-				</td>
-			</tr>
-	    	</table>
-	    	<button type="submit" name="conferma" th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}">Conferma</button>
+				<table>
+					<tr th:each="opera : ${opere}">
+						<td>
+							<a th:text="| ${opera.titolo}  ${opera.artista.nome} ${opera.artista.cognome}
+							 ${opera.id} | " >Titolo opera:</a>
+						</td>
+					</tr>
+				</table>
+			<span class="loginFormFieldName">Seleziona l'id</span>
+			<input type="text" class="loginFormFieldInput" name="opera_id" id="opera_id">
+			   	
+	    	<button type="submit" name="conferma">Conferma</button>
 		</form>
+		
 	</div>
 	
 	<div th:replace="fragments/base.html :: footer"></div>
