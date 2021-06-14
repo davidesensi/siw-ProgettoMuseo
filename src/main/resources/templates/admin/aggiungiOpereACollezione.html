@@ -20,6 +20,7 @@
 	    	<button type="submit" name="conferma" th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}">Conferma</button>
 		</form>
 	</div>
-    <footer></footer>
+	
+	<div th:replace="fragments/base.html :: footer"></div>
 </body>
 </html>

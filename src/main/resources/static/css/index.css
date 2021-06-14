@@ -53,6 +53,22 @@ div{
 		height: 15%;
 		background: tomato;
 	}
+	
+	.Footer{
+		border-radius: 10px 10px 10px 10px;
+		text-align: center;
+		margin-left: 1%;
+		margin-right: 1%;
+		height: 15%;
+		background: lightgray;
+		padding: auto;
+		margin-top: 15%;
+		margin-bottom: 1%;
+		font-size: 13px;
+		font-weight: bold;
+		font-style: italic;
+		font-family: "Times New Roman", Georgia, Serif;
+	}
 
 table {
 	margin-left: 1%;
@@ -67,7 +83,7 @@ a {
 	color: black;
 }
 
-footer {
+/*footer {
 	margin-left: 1%;
 	margin-right: 1%;
 	height: 15%;
@@ -75,4 +91,4 @@ footer {
 	padding: auto;
 	margin-top: 10%;
 	margin-bottom: 10%
-}
+}*/
