@@ -23,15 +23,15 @@
 			</tr>
 			<tr>
 				<td>Autore:</td>
-				<td th:text="|${opera.artista.nome} ${opera.artista.cognome}|"></td>
+				<td th:text="|${artista.nome} ${artista.cognome}|"></td>
 				<td><a href="artista.html" 
-				   	   th:href="@{'/opera.artista' + '/' + ${opera.artista.id}}">Maggiori Informazioni</a></td>
+				   	   th:href="@{'/artista' + '/' + ${artista.id}}">Maggiori Informazioni</a></td>
 			</tr>
 			<tr>
 				<td>Collezione:</td>
-				<td th:text="${opera.collezione.nome}"></td>
+				<td th:text="${collezione.nome}"></td>
 				<td><a  href="collezione.html"
-						th:href="@{'/opera.collezione' + '/' + ${opera.collezione.id}}">Maggiori Informazioni</a></td>
+						th:href="@{'/collezione' + '/' + ${collezione.id}}">Maggiori Informazioni</a></td>
 			</tr>				
 		</table>
 	</div>
