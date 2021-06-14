@@ -17,21 +17,26 @@
 				<td>Descrizione:</td>
 				<td th:text="*{descrizione}">Descrizione</td>
 			</tr>
+		</table>
+		
+		<table>
 			<tr>
 				<td>Elenco Opere:</td>
+			</tr>
 			<tr th:each="opera : ${collezione.opere}">
 				<td>
 					<a href="opera.html" 
 				   	   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				       th:text="|${opera.titolo}|">Titolo</a>
+				       th:text="| &bull; ${opera.titolo}|">Titolo</a>
 				</td>
 			</tr>
-			<tr>
-			<td><a th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
-					th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
-					th:method="GET">Vuoi aggiungere Opere a questa collezione?</a></td>
-			</tr>
 		</table>
+		
+		<span th:if="${accountCorrente != null}">
+			<a th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
+			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
+			   th:method="GET">Vuoi aggiungere un' OPERA a questa collezione?</a>
+		</span>	
 	</div>
 	
 	<footer></footer>

@@ -13,12 +13,14 @@
 				<td>
 					<a href="collezione.html" 
 					   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
-					   th:text="|${collezione.nome}|">Nome</a>
+					   th:text="| &bull; ${collezione.nome}|">Nome</a>
 				</td>
 			</tr>
 	    </table>
 	    
-		<a th:href="@{admin/collezioneForm}" th:action="@{admin/collezioneForm}" >Inserisci una nuova Collezione</a>
+	    <span th:if="${accountCorrente != null}">
+			<a th:href="@{admin/collezioneForm}" th:action="@{admin/collezioneForm}" >Inserisci una nuova Collezione</a>
+		</span>
 	</div>
 	<footer></footer>
 </body>

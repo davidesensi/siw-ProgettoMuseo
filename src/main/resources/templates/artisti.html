@@ -14,12 +14,14 @@
 				<td>
 					<a href="artista.html" 
 				   	   th:href="@{'/artista' + '/' + ${artista.id}}" 
-				       th:text="|${artista.nome} ${artista.cognome}|">Nome cognome</a>
+				       th:text="| &bull; ${artista.nome} ${artista.cognome}|">Nome cognome</a>
 				</td>
 			</tr>
 	    </table>
 	    
-		<a th:href="@{admin/artistaForm}" th:action="@{admin/artistaForm}" >Inserisci un nuovo Artista</a>
+	    <span th:if="${accountCorrente != null}">
+			<a th:href="@{admin/artistaForm}" th:action="@{admin/artistaForm}" >Inserisci un nuovo Artista</a>
+		</span>		
 	</div>
 	<footer></footer>
 </body>

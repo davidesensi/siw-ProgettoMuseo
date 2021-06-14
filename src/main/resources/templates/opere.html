@@ -13,12 +13,14 @@
 				<td>
 					<a href="opera.html" 
 					   th:href="@{'/opera' + '/' + ${opera.id}}" 
-					   th:text="|${opera.titolo}|">Titolo</a>
+					   th:text="| &bull; ${opera.titolo}|">Titolo</a>
 				</td>
 			</tr>
 	    </table>
 	    
-		<a th:href="@{admin/operaForm}" th:action="@{admin/operaForm}" >Inserisci una nuova Opera</a>
+	    <span th:if="${accountCorrente != null}">
+			<a th:href="@{admin/operaForm}" th:action="@{admin/operaForm}" >Inserisci una nuova Opera</a>
+		</span>		
 	</div>
 	<footer></footer>
 </body>

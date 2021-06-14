@@ -26,6 +26,8 @@
 				<td>Nazionalit&agrave;:</td>
 				<td th:text="*{nazionalita}"></td>
 			</tr>
+		</table>
+		<table>
 			<tr>
 				<td>Elenco Opere:</td>
 			</tr>
@@ -33,10 +35,10 @@
 				<td>
 					<a href="opera.html" 
 				   	   th:href="@{'/opera' + '/' + ${opera.id}}" 
-				       th:text="|${opera.titolo}|">Titolo</a>
+				       th:text="| &bull; ${opera.titolo}|">Titolo</a>
 				</td>
 			</tr>
-    </table>   		
+		</table>   		
 	</div>
 	<footer></footer>
 </body>
