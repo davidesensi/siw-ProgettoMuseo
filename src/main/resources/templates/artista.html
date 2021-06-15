@@ -20,6 +20,22 @@
 					<td th:text="*{cognome}"></td>
 				</tr>
 				<tr>
+					<td>Data di nascita:</td>
+					<td th:text="*{dataN}"></td>
+				</tr>
+				<tr>
+					<td>Luogo di nascita:</td>
+					<td th:text="*{luogoN}"></td>
+				</tr>
+				<tr>
+					<td>Data di morte:</td>
+					<td th:text="*{dataM}"></td>
+				</tr>
+				<tr>
+					<td>Luogo di morte:</td>
+					<td th:text="*{luogoM}"></td>
+				</tr>
+				<tr>
 					<td>Nazionalit&agrave;:</td>
 					<td th:text="*{nazionalita}"></td>
 				</tr>
@@ -38,6 +54,7 @@
 				</tr>
 			</table> 
 			&nbsp;	
+			<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
 	</div>
 	
 	<div th:replace="fragments/base.html :: footer"></div>

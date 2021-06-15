@@ -18,6 +18,10 @@
 				<td>Descrizione:</td>
 				<td th:text="*{descrizione}">Descrizione</td>
 			</tr>
+			<tr>
+				<td>Curatore:</td>
+				<td th:text="*{curatore}">nome cognome</td>
+			</tr>
 		</table>
 		&nbsp;
 		<table>
@@ -33,6 +37,7 @@
 			</tr>
 		</table>
 		&nbsp;
+		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
 		<span th:if="${accountCorrente != null}">
 			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
 			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
@@ -46,6 +51,7 @@
 			   <button type="submit">Rimuovi Collezione</button>
 			</form>
 		</span>	
+		
 	</div>
 	
 	<div th:replace="fragments/base.html :: footer"></div>
