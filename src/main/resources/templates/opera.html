@@ -39,10 +39,16 @@
 				</td>
 			</tr>
 		</table>
-		<span th:if="${accountCorrente != null}"> <a
-			th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
-			th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
-			th:method="GET">Vuoi aggiungere un' Collezione a quest' Opera?</a>
+		<span th:if="${accountCorrente != null}"> 
+			<form 	th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+					th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+					th:method="GET">Vuoi aggiungere un' Collezione a quest' Opera?</form>
+					
+			<form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
+				   th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
+				   th:method="GET">
+				   <button type="submit">Rimuovi Opera</button>
+			
 		</span>
 	</div>
 

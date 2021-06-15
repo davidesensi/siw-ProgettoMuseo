@@ -88,4 +88,18 @@ public class OperaService {
 		this.operaRepository.saveOrUpdate(collezione, id);
 		
 	}
+
+	public void rimuovi(Opera opera) {
+		operaRepository.deleteById(opera.getId());
+		
+	}
+
+	@Transactional
+	public boolean removeArtistaIdByOperaId(Long idOpera) {
+		if(idOpera != null) {
+			int opereModificate = this.operaRepository.removeArtistaIdByOperaId(idOpera);
+			if(opereModificate == 1) return true;
+		}
+		return false;
+	}
 }
