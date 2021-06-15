@@ -1,4 +1,5 @@
 package it.uniroma3.siw.service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -6,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.uniroma3.siw.model.Collezione;
+import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.repository.CollezioneRepository;
 
 @Service
@@ -47,8 +49,14 @@ public class CollezioneService {
 		collezioneRepository.save(collezione);
 	}
 
-	public Object findAll() {
-		return collezioneRepository.findAll();
+	@Transactional
+	public List<Collezione> findAll() {
+		Iterable<Collezione> collezioni = this.collezioneRepository.findAll();
+		List<Collezione> daRitornare = new ArrayList<>();
+		for(Collezione collezione : collezioni) {
+			daRitornare.add(collezione);
+		}
+		return daRitornare;
 	}
 
 

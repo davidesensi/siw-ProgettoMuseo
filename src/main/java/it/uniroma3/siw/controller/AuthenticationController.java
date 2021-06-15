@@ -222,13 +222,42 @@ public class AuthenticationController {
 					collezione.addOpera(opera);
 					operaService.setCollezione(collezione, opera.getId());
 					collezioneService.save(collezione);
-					model.addAttribute("collezione", collezione);
-					model.addAttribute("opere", collezione.getOpere());
-					return "collezioni";
-				
+					return "redirect::collezioni";
 			}
 			
 		return "admin/aggiungiOpereACollezione";
+		
+	}
+	
+	@RequestMapping(value = "/opera/{id}/admin/aggiungiCollezioneAOpera", method = RequestMethod.GET)
+	public String adminAggiungeCollezioneAOpera(@PathVariable("id") Long id,Model model) {
+
+		Opera opera = this.operaService.findById(id);
+		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("collezioni", this.collezioneService.findAll());
+			model.addAttribute("opera", opera);
+
+			return "admin/aggiungiCollezioneAOpera";
+		}
+		return "opere";
+	}
+
+	@RequestMapping(value = { "/opera/{id}/admin/aggiungiCollezioneAOpera" }, method = RequestMethod.POST)
+	public String registerCollezioneAOpera(@PathVariable("id") Long idOpera,
+				@RequestParam("collezione_id") Long idCollezione ,Model model) throws Exception{
+				Collezione collezione = this.collezioneService.findById(idCollezione);
+				Opera opera = operaService.findById(idOpera);
+				if(!collezione.getOpere().contains(opera)) {
+					collezione.addOpera(opera);
+					operaService.setCollezione(collezione, opera.getId());
+					operaService.save(opera);
+					return "opere";
+			}
+			
+		return "admin/aggiungiCollezioneAOpera";
 		
 	}
 

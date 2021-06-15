@@ -5,9 +5,8 @@
 </head>
 <body>
 	<div th:replace="fragments/base.html :: login"></div>
-	<h4>Dettagli Opera</h4>	
+	<h4>Dettagli Opera</h4>
 	<div th:replace="fragments/base.html :: navigator"></div>
-	
 	<div class="Corpo">
 		&nbsp;
 		<table th:object=${opera}>
@@ -26,9 +25,14 @@
 			<tr>
 				<td>Autore:</td>
 				<td th:text="|${artista.nome} ${artista.cognome}|"></td>
+
 				<td><a href="artista.html" 
 				   	   th:href="@{'/artista' + '/' + ${artista.id}}">Maggiori Informazioni</a>
 				</td>
+
+				<td><a href="artista.html"
+					th:href="@{'/artista' + '/' + ${artista.id}}">Maggiori
+						Informazioni</a></td>
 			</tr>
 			<tr>
 				<td>Collezione:</td>
@@ -38,9 +42,20 @@
 				</td>
 			</tr>				
 		</table>
-		&nbsp;
+		<table>
+			<tr>
+				<td><a href="collezione.html"
+					th:href="@{'/collezione' + '/' + ${collezione.id}}">Maggiori
+						Informazioni</a></td>
+			</tr>
+		</table>
+		<span th:if="${accountCorrente != null}"> <a
+			th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+			th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+			th:method="GET">Vuoi aggiungere un' Collezione a quest' Opera?</a>
+		</span>
 	</div>
-	
+
 	<div th:replace="fragments/base.html :: footer"></div>
 </body>
 </html>
