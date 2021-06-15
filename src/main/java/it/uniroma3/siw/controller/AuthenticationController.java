@@ -172,19 +172,24 @@ public class AuthenticationController {
 		model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("opera", new Opera());
-
+			model.addAttribute("artisti", this.artistaService.findAll());
+			model.addAttribute("collezioni", this.collezioneService.findAll());
 			return "admin/operaForm";
 		}
 		return "opere";
 	}
 
 	@RequestMapping(value = { "/admin/operaForm" }, method = RequestMethod.POST)
-	public String registerOpera(@Validated @ModelAttribute("opera") Opera opera,
+	public String registerOpera(@Validated @ModelAttribute("opera") Opera opera, 
+			@RequestParam(value = "artista") Artista artista, 
+			@RequestParam(value = "collezione") Collezione collezione,
 			BindingResult bindingResult,Model model) throws Exception{
 
 		this.operaValidator.validate(opera, bindingResult);
-
+		
 		if(!bindingResult.hasErrors()) {
+			opera.setArtista(artista);
+			opera.setCollezione(collezione);
 			operaService.save(opera);
 			model.addAttribute("opere", this.operaService.findAll());
 			return "opere";

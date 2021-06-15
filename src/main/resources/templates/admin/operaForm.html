@@ -26,6 +26,26 @@
 		                       th:field="${opera.descrizione}"/></td>
 		        </tr>
 		        <tr>
+		            <td>Autore:</td>
+		            <td>
+		            	<select name="artista" th:value = "${artista}">
+			            	<option th:each = "artista : ${artisti}"
+			            			th:text = "|${artista.nome} ${artista.cognome}|"
+			            			th:value = "${artista.id}">Leonardo Da Vinci</option>
+			            </select>
+					</td>
+		        </tr>
+		        <tr>
+		            <td>Collezione:</td>
+		            <td>
+		            	<select name="collezione" th:value = "${collezione}">
+		            		<option th:each = "collezione : ${collezioni}"
+		            				th:text = "|${collezione.nome}|"
+		            				th:value = "${collezione.id}">Il Novecento</option>
+		            	</select>
+					</td>
+		        </tr>
+		        <tr>
 		            <td>
 		                <button type="submit">Conferma Inserimento</button>
 		                <input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
