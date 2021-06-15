@@ -17,8 +17,12 @@ public interface OperaRepository extends CrudRepository<Opera,Long>{
 
 	public Optional<Opera> findById(Long id);
 
-
 	@Query("UPDATE Opera o SET o.collezione = ?1 WHERE o.id = ?2")
 	@Modifying
 	public void saveOrUpdate(Collezione collezione, Long id);
+	
+	@Query("UPDATE Opera o SET o.collezione = NULL WHERE o.id = ?1")
+	@Modifying
+	public int removeCollezioneIdByOperaId(Long idOpera);
+	
 }

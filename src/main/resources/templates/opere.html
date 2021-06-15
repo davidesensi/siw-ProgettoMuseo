@@ -8,6 +8,7 @@
 	<h4>Elenco Opere:</h4>	
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div class="Corpo">
+ 		&nbsp;
 		<table>
 			<tr th:each="opera : ${opere}">
 				<td>
@@ -19,7 +20,9 @@
 	    </table>
 	    
 	    <span th:if="${accountCorrente != null}">
-			<a th:href="@{admin/operaForm}" th:action="@{admin/operaForm}" >Inserisci una nuova Opera</a>
+			<form th:href="@{admin/operaForm}" th:action="@{admin/operaForm}" >
+				<button type="submit">Inserisci Opera</button>
+			</form>
 		</span>		
 	</div>
 	

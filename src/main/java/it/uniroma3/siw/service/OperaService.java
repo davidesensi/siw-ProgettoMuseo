@@ -40,7 +40,16 @@ public class OperaService {
 			return null;
 	}	
 	
-
+	@Transactional
+	/** Rimuove l'id della collezione dall'opera con idOpera **/
+	public boolean removeCollezioneIdByOperaId(Long idOpera) {
+		if(idOpera != null) {
+			int opereModificate = this.operaRepository.removeCollezioneIdByOperaId(idOpera);
+			if(opereModificate == 1) return true;
+		}
+		return false;
+	}
+	
 	@Transactional
 	public boolean alreadyExists(Opera opera) {
 		List<Opera> opere = this.operaRepository.findByTitolo(opera.getTitolo());

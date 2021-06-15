@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles">
+</head>
+<body>
+	<div th:replace="fragments/base.html :: login"></div>
+	<h4>Eleminazione Collezione</h4>
+	<div th:replace="fragments/base.html :: navigator"></div>
+ 	<div class="Corpo">
+ 		<table></table>
+ 		<h1>Confermi di voler eliminare l'elemento dalla colezzione?</h1>
+	    
+	    <a th:href="@{admin/removeCollezione}"
+		   th:action="@{admin/removeCollezione}"
+		   th:method="POST">ELIMINA</a>
+		<input type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+	</div>
+	
+	<div th:replace="fragments/base.html :: footer"></div>
+</body>
+</html>

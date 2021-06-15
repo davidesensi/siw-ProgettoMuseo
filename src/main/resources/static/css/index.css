@@ -4,6 +4,28 @@
 	border-radius: 10px 0px 0px 0px;
 }*/
 
+button, .button{
+	border-radius: 10px 10px 10px 10px;
+	margin-left:3%;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	background: lightskyblue;
+	font-weight: bold;
+	font-family: "Times New Roman", Georgia, Serif;
+	outline: none;
+	text-decoration: none; 
+	
+}
+
+/*button, .Button {
+	padding: .7em 1.5em;
+}
+
+button:hover { background: rgb(232,95,76); } 
+/*button:active { background: rgb(152,15,0); }
+*/
+
 h4 {
 	height: 20%px;
 	color: red;
@@ -40,12 +62,14 @@ div{
 		text-align: right;
 		background: red;
 		margin-left: 85%;
+		font-weight: bold;
 	}
 	
 	.Navigator{
 		height: 15%;
 		background: lightskyblue;
 		border-radius: 10px 10px 0px 0px;
+		font-weight: bold;
 	}
 	
 	.Corpo {
@@ -73,7 +97,8 @@ div{
 table {
 	margin-left: 1%;
 	height: 15%;
-	background: tomato;
+	font-weight: bold;
+	font-style: italic;
 }
 
 a {
@@ -82,13 +107,3 @@ a {
 	margin-bottom:2%;
 	color: black;
 }
-
-/*footer {
-	margin-left: 1%;
-	margin-right: 1%;
-	height: 15%;
-	background: lightgray;
-	padding: auto;
-	margin-top: 10%;
-	margin-bottom: 10%
-}*/

@@ -8,6 +8,7 @@
 	<h4>Dettagli Collezione</h4>
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div class="Corpo">
+ 		&nbsp;
 		<table th:object=${collezione}>
 			<tr>
 				<td>Nome:</td>
@@ -33,9 +34,17 @@
 		</table>
 		
 		<span th:if="${accountCorrente != null}">
-			<a th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
+			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
 			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
-			   th:method="GET">Vuoi aggiungere un' OPERA a questa collezione?</a>
+			   th:method="GET">
+			   <button type="submit">Aggiungi Opera</button>
+			</form>	
+					   
+			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
+			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
+			   th:method="GET">
+			   <button type="submit">Rimuovi Collezione</button>
+			</form>
 		</span>	
 	</div>
 	

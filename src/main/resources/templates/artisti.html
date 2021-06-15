@@ -9,6 +9,7 @@
 	<div th:replace="fragments/base.html :: navigator"></div>
 	
  	<div class="Corpo">
+ 		&nbsp;
 	    <table>
 			<tr th:each="artista : ${artisti}">
 				<td>
@@ -20,7 +21,9 @@
 	    </table>
 	    
 	    <span th:if="${accountCorrente != null}">
-			<a th:href="@{admin/artistaForm}" th:action="@{admin/artistaForm}" >Inserisci un nuovo Artista</a>
+			<form th:href="@{admin/artistaForm}" th:action="@{admin/artistaForm}" >
+				<button type="submit">Inserisci Artista</button>
+			</form>
 		</span>		
 	</div>
 	

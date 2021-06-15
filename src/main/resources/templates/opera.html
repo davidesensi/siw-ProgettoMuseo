@@ -9,6 +9,7 @@
 	<div th:replace="fragments/base.html :: navigator"></div>
 	
 	<div class="Corpo">
+		&nbsp;
 		<table th:object=${opera}>
 			<tr>
 				<td>Titolo:</td>
@@ -26,15 +27,18 @@
 				<td>Autore:</td>
 				<td th:text="|${artista.nome} ${artista.cognome}|"></td>
 				<td><a href="artista.html" 
-				   	   th:href="@{'/artista' + '/' + ${artista.id}}">Maggiori Informazioni</a></td>
+				   	   th:href="@{'/artista' + '/' + ${artista.id}}">Maggiori Informazioni</a>
+				</td>
 			</tr>
 			<tr>
 				<td>Collezione:</td>
 				<td th:text="${collezione.nome}"></td>
 				<td><a  href="collezione.html"
-						th:href="@{'/collezione' + '/' + ${collezione.id}}">Maggiori Informazioni</a></td>
+						th:href="@{'/collezione' + '/' + ${collezione.id}}">Maggiori Informazioni</a>
+				</td>
 			</tr>				
 		</table>
+		&nbsp;
 	</div>
 	
 	<div th:replace="fragments/base.html :: footer"></div>

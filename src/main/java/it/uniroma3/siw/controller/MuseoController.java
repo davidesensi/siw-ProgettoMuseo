@@ -69,6 +69,4 @@ public class MuseoController {
 	public String getInformazioni() {
 		return "informazioni.html";
 	}
-	
-	
 }

@@ -8,7 +8,8 @@
 	<h4>Elenco Collezioni:</h4>
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div class="Corpo">
-		<table>
+ 		&nbsp;
+ 		<table>
 			<tr th:each="collezione : ${collezioni}">
 				<td>
 					<a href="collezione.html" 
@@ -16,10 +17,12 @@
 					   th:text="| &bull; ${collezione.nome}|">Nome</a>
 				</td>
 			</tr>
-	    </table>
+		</table>
 	    
 	    <span th:if="${accountCorrente != null}">
-			<a th:href="@{admin/collezioneForm}" th:action="@{admin/collezioneForm}" >Inserisci una nuova Collezione</a>
+			<form th:href="@{admin/collezioneForm}" th:action="@{admin/collezioneForm}" >
+				<button type="submit">Inserisci Collezione</button>
+			</form>
 		</span>
 	</div>
 	
