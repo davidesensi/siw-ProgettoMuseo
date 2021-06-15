@@ -4,25 +4,35 @@
 </head>
 <body>
 	<div th:replace="fragments/base.html :: login"></div>
-	<h4>Inserimento Collezione</h4>
+	<h4>Opera a Collezione</h4>
 	
 	<div th:replace="fragments/base.html :: navigator"></div>
 	<div class="Corpo"> 			
 		<form th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}" method="POST">
-				<table>
-					<tr th:each="opera : ${opere}">
-						<td>
-							<a th:text="| ${opera.titolo}  ${opera.artista.nome} ${opera.artista.cognome}
-							 ${opera.id} | " >Titolo opera:</a>
-						</td>
-					</tr>
-				</table>
-			<span class="loginFormFieldName">Seleziona l'id</span>
-			<input type="text" class="loginFormFieldInput" name="opera_id" id="opera_id">
-			   	
-	    	<button type="submit" name="conferma">Conferma</button>
-	    	<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
-		</form>
+				&nbsp;
+			   	<table>
+			   		<tr>
+			   			<td>
+			   				<a th:text="|Selezione l'opera che vuoi aggiungere 
+			   				   alla collezione '${collezione.nome}'|"></a>
+			   			</td>
+			   			<td>
+						   	<select name="opera" th:value = "${opera}">
+						            	<option th:each = "opera : ${opere}"
+						            			th:text = "|${opera.titolo}|"
+						            			th:value = "${opera.id}">Leonardo Da Vinci</option>
+						    </select>
+					    </td>
+					    <td>
+					    	<button type="submit" name="conferma">Conferma</button>
+					    </td>
+			    	</tr>
+	    		</table>
+	    		&nbsp;
+	    </form>
+	    
+	    <input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		
 		
 	</div>
 	

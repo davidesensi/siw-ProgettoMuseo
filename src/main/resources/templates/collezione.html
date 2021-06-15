@@ -19,7 +19,7 @@
 				<td th:text="*{descrizione}">Descrizione</td>
 			</tr>
 		</table>
-		
+		&nbsp;
 		<table>
 			<tr>
 				<td>Elenco Opere:</td>
@@ -32,7 +32,7 @@
 				</td>
 			</tr>
 		</table>
-		
+		&nbsp;
 		<span th:if="${accountCorrente != null}">
 			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
 			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"

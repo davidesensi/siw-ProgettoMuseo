@@ -197,18 +197,27 @@ public class AuthenticationController {
 		return "admin/operaForm";
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping(value = "/collezione/{id}/admin/aggiungiOpereACollezione", method = RequestMethod.GET)
 	public String adminAggiungeOperaACollezione(@PathVariable("id") Long id,Model model) {
-
-		Collezione collezione = this.collezioneService.findById(id);
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		List<Opera> opere = this.operaService.findAll();
-		model.addAttribute("accountCorrente", credentials);
+		//model.addAttribute("accountCorrente", credentials);
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			model.addAttribute("collezione", collezione);
-			model.addAttribute("opere", opere);
-
+			model.addAttribute("collezione", this.collezioneService.findById(id));
+			model.addAttribute("opere", this.operaService.findAll());
 			return "admin/aggiungiOpereACollezione";
 		}
 		return "collezione/{id}";
@@ -216,12 +225,11 @@ public class AuthenticationController {
 
 	@RequestMapping(value = { "/collezione/{id}/admin/aggiungiOpereACollezione" }, method = RequestMethod.POST)
 	public String registerOperaACollezione(@PathVariable("id") Long idCollezione,
-				@RequestParam("opera_id") Long idOpera ,Model model) throws Exception{
+				@RequestParam(value = "opera") Opera opera ,Model model) throws Exception{
 				Collezione collezione = this.collezioneService.findById(idCollezione);
-				Opera opera = operaService.findById(idOpera);
 				if(!collezione.getOpere().contains(opera)) {
 					collezione.addOpera(opera);
-					operaService.setCollezione(collezione, opera.getId());
+					opera.setCollezione(collezione);
 					collezioneService.save(collezione);
 					operaService.save(opera);
 					return "collezioni";
@@ -230,6 +238,22 @@ public class AuthenticationController {
 		return "admin/aggiungiOpereACollezione";
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/opera/{id}/admin/aggiungiCollezioneAOpera", method = RequestMethod.GET)
 	public String adminAggiungeCollezioneAOpera(@PathVariable("id") Long id,Model model) {
