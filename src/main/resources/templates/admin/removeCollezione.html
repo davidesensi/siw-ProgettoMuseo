@@ -8,8 +8,20 @@
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div class="Corpo">
  		<table></table>
- 		<h1>Confermi di voler eliminare l'elemento dalla colezzione?</h1>
-	    
+ 		<h1>
+ 			<a th:text="|Sicuro di voler eliminare la collezione '${collezione.nome}' ?|"></a>
+	    </h1> 
+	    <table>
+	    	<tr>
+	    		<td>Verranno eliminate anche le seguenti opere:</td>
+	    	</tr>
+	    	<tr th:each="opera : ${collezione.opere}">
+				<td>
+					<a th:text="| &bull; ${opera.titolo}|">Titolo</a>
+				</td>
+			</tr>
+	    </table>
+	    &nbsp;
 	    <form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
 			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
 			   th:method="POST">

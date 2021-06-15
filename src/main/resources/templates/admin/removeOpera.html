@@ -8,15 +8,16 @@
 	<div th:replace="fragments/base.html :: navigator"></div>
  	<div class="Corpo">
  		<table></table>
- 		<h1>Confermi di voler eliminare l'elemento dall'opera?</h1>
-	    
+ 		<h1>
+ 			<a th:text="|Sicuro di voler eliminare l'opera '${opera.titolo}' ?|"></a>
+	    </h1>
 	    <form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
 			   th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
 			   th:method="POST">
 			   <button type="submit">Elimina</button>
 		</form>
 			   
-		<input type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
 	</div>
 	
 	<div th:replace="fragments/base.html :: footer"></div>
