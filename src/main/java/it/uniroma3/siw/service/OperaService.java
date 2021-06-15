@@ -43,8 +43,9 @@ public class OperaService {
 	@Transactional
 	/** Rimuove l'id della collezione dall'opera con idOpera **/
 	public boolean removeCollezioneIdByOperaId(Long idOpera) {
+		Opera opera = this.findById(idOpera);
 		if(idOpera != null) {
-			int opereModificate = this.operaRepository.removeCollezioneIdByOperaId(idOpera);
+			int opereModificate = this.operaRepository.removeCollezioneIdByOperaId(opera.getId());
 			if(opereModificate == 1) return true;
 		}
 		return false;
@@ -89,15 +90,25 @@ public class OperaService {
 		
 	}
 
-	public void rimuovi(Opera opera) {
-		operaRepository.deleteById(opera.getId());
+	@Transactional
+	public void rimuovi(Long id) {
+		operaRepository.rimuoviOperaById(id);
 		
 	}
 
 	@Transactional
-	public boolean removeArtistaIdByOperaId(Long idOpera) {
+	public boolean removeArtistaIdByOperaId(Long idOpera , Long idArtista) {
 		if(idOpera != null) {
-			int opereModificate = this.operaRepository.removeArtistaIdByOperaId(idOpera);
+			int opereModificate = this.operaRepository.removeArtistaIdByOperaId(idOpera,idArtista);
+			if(opereModificate == 1) return true;
+		}
+		return false;
+	}
+	
+	@Transactional
+	public boolean removeOperaIdFromCollezioneId( Long idOpera , Long idCollezione) {
+		if(idOpera != null) {
+			int opereModificate = this.operaRepository.removeOperaIdFromCollezioneId(idOpera,idCollezione);
 			if(opereModificate == 1) return true;
 		}
 		return false;

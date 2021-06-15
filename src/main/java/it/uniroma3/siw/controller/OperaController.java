@@ -43,12 +43,12 @@ public class OperaController {
     public String registerRemoveOpera(@PathVariable("id") Long id, Model model) {
     	Opera opera = operaService.findById(id);
     		/* Imposta a NULL tutte le collezioni delle opere (così si "liberano") */
-    		operaService.removeCollezioneIdByOperaId(opera.getId());
-    		operaService.removeArtistaIdByOperaId(opera.getId());
+    		/*operaService.removeOperaIdFromCollezioneId( opera.getId(),opera.getCollezione().getId());
+    		operaService.removeArtistaIdByOperaId( opera.getId(),opera.getArtista().getId());*/
     		/* Cancella la collezione dal db */
-            this.operaService.rimuovi(opera);
+            this.operaService.rimuovi(opera.getId());
         	/* Se l'inserimento dei dati nella form è corretto, viene mostrata la lista delle collezioni aggiornata */
-            return "opere";
+            return "redirect:/opere";
         
     }
     

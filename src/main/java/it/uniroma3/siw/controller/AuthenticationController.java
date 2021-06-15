@@ -159,7 +159,7 @@ public class AuthenticationController {
 		if(!bindingResult.hasErrors()) {
 			collezioneService.save(collezione);
 			model.addAttribute("collezioni", this.collezioneService.findAll());
-			return "collezioni";
+			return "redirect:/collezioni";
 		}
 		return "admin/collezioneForm";
 	}
@@ -192,7 +192,7 @@ public class AuthenticationController {
 			opera.setCollezione(collezione);
 			operaService.save(opera);
 			model.addAttribute("opere", this.operaService.findAll());
-			return "opere";
+			return "redirect:/opere";
 		}
 		return "admin/operaForm";
 	}
@@ -232,7 +232,7 @@ public class AuthenticationController {
 					opera.setCollezione(collezione);
 					collezioneService.save(collezione);
 					operaService.save(opera);
-					return "collezioni";
+					return "redirect:/collezioni";
 			}
 			
 		return "admin/aggiungiOpereACollezione";
@@ -280,7 +280,7 @@ public class AuthenticationController {
 					collezione.addOpera(opera);
 					operaService.setCollezione(collezione, opera.getId());
 					operaService.save(opera);
-					return "opere";
+					return "redirect:/opere";
 			}
 			
 		return "admin/aggiungiCollezioneAOpera";
@@ -311,7 +311,7 @@ public class AuthenticationController {
 			// this also stores the User, thanks to Cascade.ALL policy
 			credentials.setUser(user);
 			credentialsService.saveCredentials(credentials);
-			return "registrationSuccessful";
+			return "redirect:/registrationSuccessful";
 		}
 		return "registerUser";
 	}

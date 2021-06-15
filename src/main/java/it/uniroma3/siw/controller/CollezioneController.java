@@ -58,7 +58,7 @@ public class CollezioneController {
     		/* Cancella la collezione dal db */
             this.collezioneService.rimuovi(collezione);
         	/* Se l'inserimento dei dati nella form è corretto, viene mostrata la lista delle collezioni aggiornata */
-            return "collezioni";
+            return "redirect:/collezioni";
         
     }
     
