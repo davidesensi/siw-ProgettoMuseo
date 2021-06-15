@@ -71,6 +71,7 @@ div{
 	}
 	
 	.Corpo {		
+		min-height: 310px;
 		background: tomato;
 	}
 	
