@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +22,6 @@ import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.model.User;
-import it.uniroma3.siw.repository.OperaRepository;
 import it.uniroma3.siw.service.ArtistaService;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.CredentialsService;
@@ -52,8 +50,6 @@ public class AuthenticationController {
 	@Autowired
 	private OperaValidator operaValidator;
 	
-	@Autowired
-	private OperaRepository operaRepository;
 
 	@Autowired
 	private CollezioneValidator collezioneValidator;
@@ -222,7 +218,8 @@ public class AuthenticationController {
 					collezione.addOpera(opera);
 					operaService.setCollezione(collezione, opera.getId());
 					collezioneService.save(collezione);
-					return "redirect::collezioni";
+					operaService.save(opera);
+					return "collezioni";
 			}
 			
 		return "admin/aggiungiOpereACollezione";

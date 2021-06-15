@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.uniroma3.siw.model.Collezione;
-import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.repository.CollezioneRepository;
 
 @Service
