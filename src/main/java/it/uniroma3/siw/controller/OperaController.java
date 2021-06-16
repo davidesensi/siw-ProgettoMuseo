@@ -85,7 +85,7 @@ public class OperaController {
 					collezione.addOpera(opera);
 					operaService.setCollezione(collezione, opera.getId());
 					operaService.save(opera);
-					return "redirect:/opere";
+					return "redirect:/opera/{id}";
 			}
 			
 		return "admin/aggiungiCollezioneAOpera";

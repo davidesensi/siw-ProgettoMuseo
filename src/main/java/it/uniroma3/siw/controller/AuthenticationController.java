@@ -227,7 +227,7 @@ public class AuthenticationController {
 					opera.setCollezione(collezione);
 					collezioneService.save(collezione);
 					operaService.save(opera);
-					return "redirect:/collezioni";
+					return "redirect:/collezione/{id}";
 			}
 			
 		return "admin/aggiungiOpereACollezione";
