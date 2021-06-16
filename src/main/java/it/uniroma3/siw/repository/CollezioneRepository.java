@@ -16,7 +16,7 @@ public interface CollezioneRepository extends CrudRepository<Collezione,Long>{
 	public Optional<Collezione> findById(Long id);
 
 	
-	@Query("UPDATE Collezione c SET c.nome = ?1, c.descrizione = ?2 WHERE c.id = ?3")
+	@Query("UPDATE Collezione SET nome = ?1, descrizione = ?2 WHERE id = ?3")
 	@Modifying
 	public void saveOrUpdate(String nome , String descrizione ,Long id);
 

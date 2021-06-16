@@ -49,9 +49,10 @@ public class CollezioneController {
     		
     }
     
-    @RequestMapping(value = "admin/modificaCollezione", method = RequestMethod.POST)
-    public String registerModificaCollezione(@Validated @ModelAttribute("collezione") Collezione collezione,Model model) {
-    	collezioneService.update(collezione);
+    @RequestMapping(value = "collezione/{id}/admin/modificaCollezione", method = RequestMethod.POST)
+    public String registerModificaCollezione(@PathVariable("id") Long id,@Validated @ModelAttribute("collezione") Collezione collezione,
+    				Model model) {
+    		collezioneService.update(collezione, id);
             
         	/* Se l'inserimento dei dati nella form è corretto, viene mostrata la lista delle collezioni aggiornata */
             model.addAttribute("collezioni", this.collezioneService.findAll());

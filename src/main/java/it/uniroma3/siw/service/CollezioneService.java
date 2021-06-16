@@ -21,8 +21,8 @@ public class CollezioneService {
 	}
 	
 	@Transactional
-	public void update(Collezione collezione) {
-		collezioneRepository.saveOrUpdate(collezione.getNome(), collezione.getDescrizione(),collezione.getId());
+	public void update(Collezione collezione, Long id) {
+		collezioneRepository.saveOrUpdate(collezione.getNome(), collezione.getDescrizione(),id);
 	}
 		
 	@Transactional

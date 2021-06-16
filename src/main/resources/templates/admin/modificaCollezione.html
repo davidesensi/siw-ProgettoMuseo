@@ -8,7 +8,7 @@
 	
 	<div th:replace="fragments/base.html :: navigator"></div>
 	<div class="Corpo"> 			
-		<form th:action="@{/admin/modificaCollezione}" method="POST">
+		<form th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/modificaCollezione'}" method="POST">
 			<table>
 				<tr>
 		            <td>Nome</td>
