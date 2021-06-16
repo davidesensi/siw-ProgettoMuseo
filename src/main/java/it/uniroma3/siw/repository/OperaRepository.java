@@ -37,4 +37,8 @@ public interface OperaRepository extends CrudRepository<Opera,Long>{
 	@Modifying
 	public int rimuoviOperaById(Long idOpera);
 
+	@Query("UPDATE Opera SET titolo = ?1, anno = ?2, descrizione = ?3 WHERE id = ?4")
+	@Modifying
+	public void saveOrUpdateOpera(String titolo, int anno, String descrizione, Long id);
+
 }

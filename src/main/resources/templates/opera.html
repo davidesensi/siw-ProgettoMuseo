@@ -57,6 +57,14 @@
 			</form>			
 		</span>
 		
+		<span th:if="${accountCorrente != null}">
+			<form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/modificaOpera'}"
+			      th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/modificaOpera'}"
+				  th:method="GET">
+				  <button type="submit">Modifica Opera</button>
+			</form>
+		</span>
+		
 		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">		
 	</div>
 

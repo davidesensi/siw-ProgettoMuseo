@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles"> 
+</head>
+<body>
+	<div th:replace="fragments/base.html :: login"></div>
+	<h4>Inserimento Opera</h4>
+	
+	<div th:replace="fragments/base.html :: navigator"></div>
+	<div class="Corpo"> 			
+		<form th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/modificaOpera'}" method="POST">
+			<table>
+				<tr>
+		            <td>Titolo</td>
+		            <td><input type="text" placeholder="titolo" required
+		                       th:field="${opera.titolo}"/></td>
+		        </tr>
+		        <tr>
+		            <td>Anno</td>
+		            <td><input type="number" placeholder="anno"
+		                       th:field="${opera.anno}"/></td>
+		        </tr>
+		        <tr>
+		            <td>Descrizione</td>
+		            <td><input type="text" placeholder="descrizione"
+		                       th:field="${opera.descrizione}"/></td>
+		        </tr>
+		        <tr>
+		            <td>
+		                <button type="submit">Conferma Inserimento</button>
+		                <input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		            </td>
+		        </tr>
+	    	</table>
+		</form>
+	</div>
+	
+	<div th:replace="fragments/base.html :: footer"></div>
+</body>
+</html>

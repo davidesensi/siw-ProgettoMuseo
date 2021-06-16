@@ -6,6 +6,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -91,6 +93,32 @@ public class OperaController {
 		return "admin/aggiungiCollezioneAOpera";
 		
 	}
+	
+	@RequestMapping(value = "opera/{id}/admin/modificaOpera", method = RequestMethod.GET)
+    public String modificaCollezione(@PathVariable("id") Long id, Model model) {    	
+    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
+		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			
+			model.addAttribute("opera", this.operaService.findById(id));
+			return "admin/modificaOpera";
+		}
+		
+		return "opere";
+    		
+    }
+    
+    @RequestMapping(value = "opera/{id}/admin/modificaOpera", method = RequestMethod.POST)
+    public String registerModificaCollezione(@PathVariable("id") Long id,@Validated @ModelAttribute("collezione") Opera opera,
+    				Model model) {
+    		operaService.update(opera, id);
+            
+        	/* Se l'inserimento dei dati nella form è corretto, viene mostrata la lista delle collezioni aggiornata */
+            model.addAttribute("opere", this.operaService.findAll());
+            return "redirect:/opere";
+        
+    }
     
     
 }

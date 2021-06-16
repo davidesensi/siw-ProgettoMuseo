@@ -113,4 +113,9 @@ public class OperaService {
 		}
 		return false;
 	}
+
+	@Transactional
+	public void update(Opera opera, Long id) {
+		operaRepository.saveOrUpdateOpera(opera.getTitolo(),opera.getAnno(),opera.getDescrizione(),id);
+	}
 }
