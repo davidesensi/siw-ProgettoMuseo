@@ -6,12 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 public class Artista {
 	//definizioni attributi
-
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -21,15 +18,13 @@ public class Artista {
 
 	@Column(nullable=false)
 	private String cognome;
-
-	@JsonFormat(pattern="YYYY/MM/DD")
-	//@Column(nullable=false)
+	
+	@Column(nullable=false)
 	private LocalDate dataN;
 	
 	@Column(nullable=false)
 	private String luogoN;
 
-	@JsonFormat(pattern="YYYY/MM/DD")
 	private LocalDate dataM;
 	private String luogoM;
 

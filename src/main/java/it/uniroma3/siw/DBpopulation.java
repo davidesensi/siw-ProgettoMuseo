@@ -1,6 +1,9 @@
 package it.uniroma3.siw;
 
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -49,36 +52,44 @@ public class DBpopulation implements ApplicationRunner{
 		Artista DaVinci = new Artista();
 		DaVinci.setNome("Leonardo");
 		DaVinci.setCognome("Da Vinci");
-		//DaVinci.setDataN('1452/04/15');
+		LocalDate nascitaDaVinci = LocalDate.of(1452,Month.APRIL,02);
+		DaVinci.setDataN(nascitaDaVinci);
 		DaVinci.setLuogoN("Anchiano");
-		//DaVinci.setDataM("1519/05/02");
+		LocalDate morteDaVinci = LocalDate.of(1519,Month.MAY,02);
+		DaVinci.setDataM(morteDaVinci);
 		DaVinci.setLuogoM("Amboise");
 		DaVinci.setNazionalita("Italiana");
 		
 		Artista Pelizza = new Artista();
 		Pelizza.setNome("Giuseppe");
 		Pelizza.setCognome("Pelizza");
-		//Pelizza.setDataN("1868/07/28");
+		LocalDate nascitaPelizza = LocalDate.of(1868,Month.JULY,28);
+		Pelizza.setDataN(nascitaPelizza);
 		Pelizza.setLuogoN("Volpedo");
-		//Pelizza.setDataM(1907-06-14);
+		LocalDate mortePelizza = LocalDate.of(1519,Month.JUNE,14);
+		Pelizza.setDataM(mortePelizza);
 		Pelizza.setLuogoM("Volpedo");
 		Pelizza.setNazionalita("Italiana");
 		
 		Artista Andy = new Artista();
 		Andy.setNome("Andy");
 		Andy.setCognome("Warhol");
-		//Andy.setDataN("1928/08/06");
+		LocalDate nascitaAndy = LocalDate.of(1928,Month.AUGUST,06);
+		Andy.setDataN(nascitaAndy);
 		Andy.setLuogoN("Pittsburgh");
-		//Andy.setDataM(1987-02-22);
+		LocalDate morteAndy = LocalDate.of(1987,Month.FEBRUARY,22);
+		Andy.setDataM(morteAndy);
 		Andy.setLuogoM("New York");
 		Andy.setNazionalita("Statunitense");
 		
 		Artista Roy = new Artista();
 		Roy.setNome("Roy");
 		Roy.setCognome("Lichtenstein");
-		//Roy.setDataN("1923/10/27");
+		LocalDate nascitaRoy = LocalDate.of(1923,Month.SEPTEMBER,27);
+		Roy.setDataN(nascitaRoy);
 		Roy.setLuogoN("New York");
-		//Roy.setDataM(1997-09-29);
+		LocalDate morteRoy = LocalDate.of(1997,Month.SEPTEMBER,29);
+		Roy.setDataM(morteRoy);
 		Roy.setLuogoM("New York");
 		Roy.setNazionalita("Statunitense");
 		
