@@ -27,8 +27,10 @@
 		        </tr>
 		        <tr>
 		            <td>Data di nascita</td>
-		            <td><input type="date" placeholder="dataN" 
+		            <td><input type="date" placeholder="dataN" required
 		                       th:field="${artista.dataN}"/></td>
+		            <td th:if="${#fields.hasErrors('artista.dataN')}"
+		                th:errors="${artista.dataoN}" th:style="'color:red'"></td>
 		        </tr>
 		        <tr>
 		            <td>Luogo di nascita</td>

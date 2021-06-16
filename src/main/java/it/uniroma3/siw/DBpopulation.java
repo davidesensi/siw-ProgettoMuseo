@@ -161,6 +161,10 @@ public class DBpopulation implements ApplicationRunner{
 		Curatore davide = new Curatore();
 		davide.setNome("Davide");
 		davide.setCognome("Sensi");
+		LocalDate nascitaDavide = LocalDate.of(1997,Month.SEPTEMBER,9);
+		davide.setDataN(nascitaDavide);
+		davide.setLuogoN("Roma");
+		davide.setMatricola("508825");
 		davide.setEmail("davide.sen@email.com");
 		davide.setTelefono("3387456975");
 		//davide.addCollezione(cc);
@@ -174,6 +178,10 @@ public class DBpopulation implements ApplicationRunner{
 		Curatore stefano = new Curatore();
 		stefano.setNome("Stefano");
 		stefano.setCognome("Zappasodi");
+		LocalDate nascitaStefano = LocalDate.of(1997,Month.NOVEMBER,20);
+		stefano.setDataN(nascitaStefano);
+		stefano.setLuogoN("San Benedetto del Tronto");
+		stefano.setMatricola("508857");
 		stefano.setEmail("stefano.zap@email.com");
 		stefano.setTelefono("3387425312");
 		//stefano.addCollezione(cc1);
@@ -187,6 +195,10 @@ public class DBpopulation implements ApplicationRunner{
 		Curatore admin = new Curatore();
 		admin.setNome("Admin");
 		admin.setCognome("Admin");
+		LocalDate nascitaAdmin = LocalDate.of(1900,Month.JANUARY,01);
+		admin.setDataN(nascitaAdmin);
+		admin.setLuogoN("Admin");
+		admin.setMatricola("000000");
 		admin.setEmail("admin.adm@email.com");
 		admin.setTelefono("3387453535");
 		

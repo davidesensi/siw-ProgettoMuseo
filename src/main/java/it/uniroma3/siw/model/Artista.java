@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Artista {
 	//definizioni attributi
@@ -20,11 +22,13 @@ public class Artista {
 	private String cognome;
 	
 	@Column(nullable=false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataN;
 	
 	@Column(nullable=false)
 	private String luogoN;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataM;
 	private String luogoM;
 

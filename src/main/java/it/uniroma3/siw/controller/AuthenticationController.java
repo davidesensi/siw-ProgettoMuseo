@@ -105,26 +105,18 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/admin/artistaForm", method = RequestMethod.GET)
 	public String adminAggiungeArtista(Model model) {
-
-		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
-		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-			model.addAttribute("artista", new Artista());
-
-			return "admin/artistaForm";
-		}
-		return "artisti";
+		model.addAttribute("artista", new Artista());
+		return "admin/artistaForm";
 	}
 	
 	@RequestMapping(value = { "/admin/artistaForm" }, method = RequestMethod.POST)
-	public String registerArtista(@Validated @ModelAttribute("artista") Artista artista,
-			BindingResult bindingResult,Model model) throws Exception{
+	public String registerArtista(@ModelAttribute("artista") Artista artista,
+								Model model,BindingResult bindingResult){
 
 		this.artistaValidator.validate(artista, bindingResult);
 
 		if(!bindingResult.hasErrors()) {
-			artistaService.save(artista);
+			this.artistaService.inserisci(artista);
 			model.addAttribute("artisti", this.artistaService.findAll());
 			return "artisti";
 		}

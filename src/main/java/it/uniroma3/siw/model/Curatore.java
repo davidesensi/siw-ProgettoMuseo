@@ -22,13 +22,13 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private LocalDate dataN;
 
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private String luogoN;
 
-	//@Column(nullable = false)
+	@Column(nullable = false)
 	private String matricola;
 
 	@Column(nullable = false)
