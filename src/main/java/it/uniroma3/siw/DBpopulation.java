@@ -167,7 +167,8 @@ public class DBpopulation implements ApplicationRunner{
 		davide.setMatricola("508825");
 		davide.setEmail("davide.sen@email.com");
 		davide.setTelefono("3387456975");
-		//davide.addCollezione(cc);
+		davide.addCollezione(cc);
+		davide.addCollezione(cc2);
 		
 		Credentials c1 = new Credentials();
 		c1.setUsername("davide");
@@ -184,7 +185,9 @@ public class DBpopulation implements ApplicationRunner{
 		stefano.setMatricola("508857");
 		stefano.setEmail("stefano.zap@email.com");
 		stefano.setTelefono("3387425312");
-		//stefano.addCollezione(cc1);
+		stefano.addCollezione(cc1);
+		stefano.addCollezione(cc3);
+		stefano.addCollezione(cc4);
 		
 		Credentials c2 = new Credentials();
 		c2.setUsername("stefano");
@@ -214,8 +217,6 @@ public class DBpopulation implements ApplicationRunner{
 		o3.setCollezione(cc4);
 		o4.setCollezione(cc4);
 		o5.setCollezione(cc4);
-		//cc.setCuratore(davide);
-		//cc1.setCuratore(stefano);
 		
 		
 		
@@ -230,13 +231,22 @@ public class DBpopulation implements ApplicationRunner{
 		operaRepository.save(o3);
 		operaRepository.save(o4);
 		operaRepository.save(o5);		
+		
+		curatoreRepository.save(davide);
+		curatoreRepository.save(stefano);
+
+		cc.setCuratore(davide);
+		cc1.setCuratore(stefano);
+		cc2.setCuratore(davide);
+		cc3.setCuratore(stefano);
+		cc4.setCuratore(stefano);
+	
 		collezioneRepository.save(cc);
 		collezioneRepository.save(cc1);
 		collezioneRepository.save(cc2);
 		collezioneRepository.save(cc3);
 		collezioneRepository.save(cc4);
-		curatoreRepository.save(davide);
-		curatoreRepository.save(stefano);
+		
 		curatoreRepository.save(admin);
 		credentialsService.saveCredentials(c1);
 		credentialsService.saveCredentials(c2);

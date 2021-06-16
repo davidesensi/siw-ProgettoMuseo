@@ -20,7 +20,7 @@
 			</tr>
 			<tr>
 				<td>Curatore:</td>
-				<td th:text="*{curatore}">nome cognome</td>
+				<td th:text="|*{curatore.nome} *{curatore.cognome} di *{curatore.luogoN}|">nome cognome</td>
 			</tr>
 		</table>
 		

@@ -39,7 +39,7 @@ public class Curatore {
 
 	//Associazione OneToMany tra Curatore e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Curatore e Collezione si riferiscono alla stessa cosa
-	@OneToMany(mappedBy = "curatore", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "curatore")
 	private List <Collezione> collezioni;
 
 	//Costruttore no args
