@@ -230,6 +230,7 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 
+	@SuppressWarnings("static-access")
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("user") User user,
 			BindingResult userBindingResult,
@@ -246,8 +247,9 @@ public class AuthenticationController {
 			// set the user and store the credentials;
 			// this also stores the User, thanks to Cascade.ALL policy
 			credentials.setUser(user);
+			credentials.setRole(credentials.DEFAULT_ROLE);
 			credentialsService.saveCredentials(credentials);
-			return "redirect:/registrationSuccessful";
+			return "redirect:/login";
 		}
 		return "registerUser";
 	}
