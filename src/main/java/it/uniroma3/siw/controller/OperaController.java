@@ -38,7 +38,9 @@ public class OperaController {
     public String removeOpera(@PathVariable("id") Long id, Model model) {    	
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			
 			model.addAttribute("opera", this.operaService.findById(id));
@@ -69,7 +71,9 @@ public class OperaController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezioni", this.collezioneService.findAll());
 			model.addAttribute("opera", this.operaService.findById(id));
@@ -98,7 +102,9 @@ public class OperaController {
     public String modificaCollezione(@PathVariable("id") Long id, Model model) {    	
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			
 			model.addAttribute("opera", this.operaService.findById(id));

@@ -83,7 +83,9 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			return "index";
 		}
@@ -95,7 +97,9 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("artisti", this.artistaService.findAll());
 			return "admin/artistiAdmin";
@@ -129,7 +133,9 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("collezione", new Collezione());
 
@@ -157,7 +163,9 @@ public class AuthenticationController {
 
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			model.addAttribute("opera", new Opera());
 			model.addAttribute("artisti", this.artistaService.findAll());

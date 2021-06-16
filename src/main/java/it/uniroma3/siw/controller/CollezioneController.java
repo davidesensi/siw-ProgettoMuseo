@@ -38,7 +38,9 @@ public class CollezioneController {
     public String modificaCollezione(@PathVariable("id") Long id, Model model) {    	
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("accountCorrente", credentials);
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			
 			model.addAttribute("collezione", this.collezioneService.findById(id));
@@ -65,7 +67,9 @@ public class CollezioneController {
     public String removeCollezione(@PathVariable("id") Long id, Model model) {    	
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		
+		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+			model.addAttribute("accountCorrente", credentials);
+		}
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			
 			model.addAttribute("collezione", this.collezioneService.findById(id));
