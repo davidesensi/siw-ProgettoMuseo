@@ -37,23 +37,27 @@
 					<a href="collezione.html"
 					th:href="@{'/collezione' + '/' + ${collezione.id}}">Maggiori Informazioni</a>
 				</td>
+				<td>
+					<span th:if="${accountCorrente != null}"> 
+						<form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+				 			  th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
+				 			  th:method="GET">
+				 			  <button type="submit">Modifica</button>
+				 		</form>
+					</span>
+				</td>
 			</tr>
 		</table>
-		&nbsp;
-		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
-		<span th:if="${accountCorrente != null}"> 
-			<form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
-				  th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}"
-				  th:method="GET">
-				  <button type="submit">Modifica Collezione</button>
-			</form>
-					
+		
+		<span th:if="${accountCorrente != null}">		
 			<form th:href="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
 				  th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/removeOpera'}"
 				  th:method="GET">
 				   <button type="submit">Rimuovi Opera</button>
 			</form>			
 		</span>
+		
+		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">		
 	</div>
 
 	<div th:replace="fragments/base.html :: footer"></div>

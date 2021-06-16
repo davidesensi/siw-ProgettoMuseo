@@ -23,7 +23,15 @@
 				<td th:text="*{curatore}">nome cognome</td>
 			</tr>
 		</table>
-		&nbsp;
+		
+		<span th:if="${accountCorrente != null}">
+			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
+			      th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
+				  th:method="GET">
+				  <button type="submit">Rimuovi Collezione</button>
+			</form>
+		</span>
+		
 		<table>
 			<tr>
 				<td>Elenco Opere:</td>
@@ -36,21 +44,18 @@
 				</td>
 			</tr>
 		</table>
-		&nbsp;
-		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		
 		<span th:if="${accountCorrente != null}">
 			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
-			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
-			   th:method="GET">
-			   <button type="submit">Aggiungi Opera</button>
+			      th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/aggiungiOpereACollezione'}"
+				  th:method="GET">
+				  <button type="submit">Aggiungi Opera</button>
 			</form>	
-					   
-			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
-			   th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/removeCollezione'}"
-			   th:method="GET">
-			   <button type="submit">Rimuovi Collezione</button>
-			</form>
-		</span>	
+		</span>
+		
+		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		
+		
 		
 	</div>
 	
