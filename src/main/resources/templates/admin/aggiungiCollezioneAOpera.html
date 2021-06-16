@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles"> 
+</head>
+<body>
+	<div th:replace="fragments/base.html :: login"></div>
+	<h4>Inserimento Opera</h4>
+	
+	<div th:replace="fragments/base.html :: navigator"></div>
+	<div class="Corpo"> 			
+		<form th:action="@{'/opera' + '/' + ${opera.id} + '/' + 'admin/aggiungiCollezioneAOpera'}" method="POST">
+				&nbsp;
+			   	<table>
+			   		<tr>
+			   			<td>
+			   				<a th:text="|Selezione l'opera che vuoi aggiungere 
+			   				   alla collezione '${opera.titolo}'|"></a>
+			   			</td>
+			   			<td>
+						   	<select name="collezione" th:value = "${collezione}">
+						            	<option th:each = "collezione : ${collezioni}"
+						            			th:text = "|${collezione.nome}|"
+						            			th:value = "${collezione.id}">Leonardo Da Vinci</option>
+						    </select>
+					    </td>
+					    <td>
+					    	<button type="submit" name="conferma">Conferma</button>
+					    </td>
+			    	</tr>
+	    		</table>
+	    		&nbsp;
+		</form>
+		
+		<input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		
+	</div>
+	
+	<div th:replace="fragments/base.html :: footer"></div>
+</body>
+</html>
