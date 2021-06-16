@@ -118,7 +118,7 @@ public class AuthenticationController {
 		if(!bindingResult.hasErrors()) {
 			this.artistaService.inserisci(artista);
 			model.addAttribute("artisti", this.artistaService.findAll());
-			return "artisti";
+			return "redirect:/artisti";
 		}
 		return "admin/artistaForm";
 	}
