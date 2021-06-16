@@ -10,6 +10,8 @@ h4 {
 	text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
 
+h1,h2,h3{margin-left: 2%;}
+
 body {
 	background-image: url("/images/sfondo.jpg");
 	background-size: 100%;

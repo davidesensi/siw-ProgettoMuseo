@@ -49,9 +49,9 @@ public class DBpopulation implements ApplicationRunner{
 		Artista DaVinci = new Artista();
 		DaVinci.setNome("Leonardo");
 		DaVinci.setCognome("Da Vinci");
-		//DaVinci.setDataN("1452/04/15");
+		//DaVinci.setDataN('1452/04/15');
 		DaVinci.setLuogoN("Anchiano");
-		//DaVinci.setDataM(1519-05-02);
+		//DaVinci.setDataM("1519/05/02");
 		DaVinci.setLuogoM("Amboise");
 		DaVinci.setNazionalita("Italiana");
 		

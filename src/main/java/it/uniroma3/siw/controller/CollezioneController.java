@@ -5,7 +5,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +16,6 @@ import it.uniroma3.siw.model.Opera;
 import it.uniroma3.siw.service.CollezioneService;
 import it.uniroma3.siw.service.CredentialsService;
 import it.uniroma3.siw.service.OperaService;
-//import it.uniroma3.siw.validator.CollezioneValidator;
 
 @Controller
 public class CollezioneController {
@@ -27,9 +25,6 @@ public class CollezioneController {
 	
 	@Autowired
 	private CollezioneService collezioneService;
-	
-    //@Autowired
-    //private CollezioneValidator collezioneValidator;
     
     /* Il service di Opera ci serve per la constatazione dell'ID della prima opera, in quanto una collezione DEVE AVERE ALMENO UN'OPERA */
     @Autowired

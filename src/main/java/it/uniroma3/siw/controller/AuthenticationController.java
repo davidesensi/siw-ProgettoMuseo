@@ -1,8 +1,5 @@
 package it.uniroma3.siw.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -69,8 +66,7 @@ public class AuthenticationController {
 			model.addAttribute("accountCorrente", model.getAttribute("accountCorrente"));
 			return "index";
 		
-    }
-	
+    }	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET) 
 	public String showLoginForm (Model model) {
@@ -214,8 +210,7 @@ public class AuthenticationController {
 	public String adminAggiungeOperaACollezione(@PathVariable("id") Long id,Model model) {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		//model.addAttribute("accountCorrente", credentials);
-		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {			
 			model.addAttribute("collezione", this.collezioneService.findById(id));
 			model.addAttribute("opere", this.operaService.findAll());
 			return "admin/aggiungiOpereACollezione";
