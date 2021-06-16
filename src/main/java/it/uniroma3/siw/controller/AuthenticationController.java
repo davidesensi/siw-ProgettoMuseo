@@ -185,19 +185,7 @@ public class AuthenticationController {
 		return "admin/operaForm";
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/collezione/{id}/admin/aggiungiOpereACollezione", method = RequestMethod.GET)
 	public String adminAggiungeOperaACollezione(@PathVariable("id") Long id,Model model) {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();

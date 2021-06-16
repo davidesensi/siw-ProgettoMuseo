@@ -32,6 +32,14 @@
 			</form>
 		</span>
 		
+		<span th:if="${accountCorrente != null}">
+			<form th:href="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/modificaCollezione'}"
+			      th:action="@{'/collezione' + '/' + ${collezione.id} + '/' + 'admin/modificaCollezione'}"
+				  th:method="GET">
+				  <button type="submit">Modifica Collezione</button>
+			</form>
+		</span>
+		
 		<table>
 			<tr>
 				<td>Elenco Opere:</td>

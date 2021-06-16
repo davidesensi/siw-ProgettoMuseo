@@ -21,7 +21,7 @@ public class Opera {
 
 	//Associazione ManyToOne tra Opera e Collezione, viene mappato per identicficare che  due riferiemnti 
 	//in Artista e Opera si riferiscono alla stessa cosa
-	@ManyToOne(cascade= {CascadeType.ALL })
+	@ManyToOne(cascade= {CascadeType.ALL})
 	private Collezione collezione;
 
 	//Associazione ManyToOne tra Opera e Artista, viene mappato per identicficare che  due riferiemnti 

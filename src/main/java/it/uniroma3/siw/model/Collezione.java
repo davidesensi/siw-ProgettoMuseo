@@ -6,7 +6,10 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
+@DynamicUpdate
 public class Collezione {
 
 	//definizioni attributi

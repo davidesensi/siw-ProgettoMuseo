@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles"> 
+</head>
+<body>
+	<div th:replace="fragments/base.html :: login"></div>
+	<h4>Inserimento Collezione</h4>
+	
+	<div th:replace="fragments/base.html :: navigator"></div>
+	<div class="Corpo"> 			
+		<form th:action="@{/admin/modificaCollezione}" method="POST">
+			<table>
+				<tr>
+		            <td>Nome</td>
+		            <td><input type="text" placeholder="nome" required
+		                       th:field="${collezione.nome}"/></td>
+		        </tr>
+		        <tr>
+		            <td>Descrizione</td>
+		            <td><input type="text" placeholder="descrizione" required
+		                       th:field="${collezione.descrizione}"/></td>
+		        </tr>
+		        <tr>
+		            <td>
+		                <button type="submit">Conferma Inserimento</button>
+		                <input class="button" type="button" value="Indietro" onClick="javascript:history.back()" name="button">
+		            </td>
+		        </tr>
+	    	</table>
+		</form>
+	</div>
+    
+    <div th:replace="fragments/base.html :: footer"></div>
+</body>
+</html>

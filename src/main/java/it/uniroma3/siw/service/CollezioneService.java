@@ -19,6 +19,11 @@ public class CollezioneService {
 	public Collezione inserisci(Collezione collezione) {
 		return collezioneRepository.save(collezione);
 	}
+	
+	@Transactional
+	public void update(Collezione collezione) {
+		collezioneRepository.saveOrUpdate(collezione.getNome(), collezione.getDescrizione(),collezione.getId());
+	}
 		
 	@Transactional
 	public void rimuovi(Collezione collezione) {
